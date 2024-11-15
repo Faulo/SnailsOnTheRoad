@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a2d24977bcbb9499d4e0c069b4c6df, type: 3}
+  m_Name: Plane_TheBasic
+  m_EditorClassIdentifier: 
+  displayName: 
+  portrait: {fileID: 0}
+  yawSpeed: 1
+  pitchSpeed: 1
+  rollSpeed: 1
+  meshPrefab: {fileID: 0}
+  dragMinimum: 0
+  dragMaximum: 5
+  dragBrakeMultiplier: 1
+  liftCoefficient: 1
+  boostMultiplier: 1
+  area: 1
+  minHealth: 0
+  maxHealth: 1
+  manoeuvrability: 1
+  maxManoeuvrability: 3
+  lift: 1
+  maxLift: 1
+  size: 0.2
+  maxSize: 5
+  nitro: 0.33333334
+  maxNitro: 3

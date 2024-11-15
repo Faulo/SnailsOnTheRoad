@@ -1,0 +1,18 @@
+{
+    "name": "SotR.Player",
+    "rootNamespace": "",
+    "references": [
+        "Unity.InputSystem",
+        "Slothsoft.UnityExtensions",
+        "MyBox"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
