@@ -1,7 +1,7 @@
 using MyBox;
 using UnityEngine;
 
-namespace SitS.Player {
+namespace SotR.Player {
     [CreateAssetMenu]
     public sealed class PlaneModel : ScriptableObject {
         [Space]

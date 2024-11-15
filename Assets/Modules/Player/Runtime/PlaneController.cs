@@ -1,7 +1,7 @@
 ﻿using Slothsoft.UnityExtensions;
 using UnityEngine;
 
-namespace SitS.Player {
+namespace SotR.Player {
     [ExecuteAlways]
     sealed class PlaneController : MonoBehaviour {
 

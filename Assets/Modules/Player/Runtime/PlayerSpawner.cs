@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SitS.Player {
+namespace SotR.Player {
     sealed class PlayerSpawner : MonoBehaviour {
         [SerializeField]
         PlayerModel player;

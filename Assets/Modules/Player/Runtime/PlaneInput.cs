@@ -2,7 +2,7 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace SitS.Player {
+namespace SotR.Player {
     sealed class PlaneInput : MonoBehaviour {
         [SerializeField, Expandable]
         InputModel input;

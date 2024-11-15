@@ -2,7 +2,7 @@ using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
-namespace SitS.Player {
+namespace SotR.Player {
     [CreateAssetMenu]
     public sealed class PlayerModel : ScriptableObject {
         [SerializeField]

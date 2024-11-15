@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SitS.Player {
+namespace SotR.Player {
     [CreateAssetMenu]
     sealed class InputModel : ScriptableObject {
         [SerializeField]
