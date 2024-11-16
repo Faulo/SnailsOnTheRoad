@@ -16,7 +16,7 @@ MonoBehaviour:
   moveSpeed: 10
   dragMinimum: 0
   dragMaximum: 1
-  boostMultiplier: 5
+  boostMultiplier: 12
   area: 1
   minHealth: 0
   maxHealth: 1

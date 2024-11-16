@@ -12,6 +12,10 @@ namespace SotR.Player {
             this.input.intendedDirection.x = input.Get<Vector2>().x;
             this.input.intendedDirection.y = 0.0f;
             this.input.intendedDirection.z = input.Get<Vector2>().y;
+
+            if (this.input.intendedDirection != Vector3.zero) {
+                this.input.intendedYaw = Vector3.SignedAngle(Vector3.left, this.input.intendedDirection, Vector3.up);
+            }
         }
 
         public void OnBoost(InputValue input) {

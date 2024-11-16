@@ -10,13 +10,6 @@ namespace SotR.Player {
         [SerializeField]
         internal bool intendsBoost;
 
-        internal float cachedIntendedYaw = 0.0f;
-
-        internal float intendedYaw() {
-            if (intendedDirection != Vector3.zero) {
-                cachedIntendedYaw = Vector3.SignedAngle(Vector3.left, intendedDirection, Vector3.up);
-            }
-            return cachedIntendedYaw;
-        }
+        internal float intendedYaw;
     }
 }
