@@ -9,7 +9,7 @@ namespace SotR.Game {
         [SerializeField]
         PolygonCollider2D _collider;
 
-        [SerializeField]
+        [SerializeField, Range(0.001f, 10)]
         float _tolerance = 0.05f;
 
         readonly List<Vector2> _points = new();
