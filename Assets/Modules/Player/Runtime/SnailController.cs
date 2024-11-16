@@ -1,4 +1,5 @@
-﻿using Slothsoft.UnityExtensions;
+﻿using System.Linq;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace SotR.Player {
@@ -78,10 +79,12 @@ namespace SotR.Player {
 
         void UpdateGround() {
             overlapCount = Physics2D.OverlapPointNonAlloc(attachedRigidbody.position, overlapColliders, groundLayers);
-            for (int i = 0; i < overlapCount; i++) {
-                if (overlapColliders[i].sharedMaterial) {
-                    snail.ground = overlapColliders[i].sharedMaterial;
-                }
+            if (overlapCount > 0) {
+                snail.ground = overlapColliders
+                    .Take(overlapCount)
+                    .OrderBy(c => c.transform.position.z)
+                    .Select(c => c.sharedMaterial)
+                    .First();
             }
         }
 
