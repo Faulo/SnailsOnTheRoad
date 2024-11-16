@@ -1,6 +1,4 @@
-using MyBox;
 using UnityEngine;
-using UnityEngine.Windows;
 
 namespace SotR.Player {
     [CreateAssetMenu]
@@ -8,8 +6,12 @@ namespace SotR.Player {
         [SerializeField]
         internal Vector2 intendedDirection;
         [SerializeField]
-        internal bool intendsBoost;
-
         internal float intendedYaw;
+
+        [Space]
+        [SerializeField]
+        internal bool intendsBoost;
+        [SerializeField]
+        internal bool intendsShell;
     }
 }

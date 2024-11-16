@@ -2,8 +2,9 @@
 using UnityEngine;
 
 namespace SotR.Player {
-    [ExecuteAlways]
     sealed class SnailController : MonoBehaviour {
+        [SerializeField]
+        Rigidbody2D attachedRigidbody;
 
         [SerializeField, Expandable]
         InputModel input;
@@ -11,64 +12,55 @@ namespace SotR.Player {
         [SerializeField, Expandable]
         SnailModel snail;
 
-        [Space]
-        [SerializeField]
-        Rigidbody2D attachedRigidbody;
-
-        [SerializeField]
-        Vector2 boostStep;
-
-        [SerializeField]
-        Vector2 velocity = Vector2.zero;
-
-        [SerializeField]
-        Vector2 intendedDirection;
-
-        [SerializeField]
-        float intendedYaw;
-
-        [SerializeField]
-        float yawVelocity;
-
-        [SerializeField]
-        float yawSmoothTime = 0.1f;
-
-        public float currentYaw {
+        internal float currentYaw {
             get => attachedRigidbody.rotation;
             set => attachedRigidbody.MoveRotation(value);
         }
 
-        void FixedUpdate() {
-            if (!Application.isPlaying) {
-                return;
-            }
+        internal Vector2 currentVelocity {
+            get => attachedRigidbody.velocity;
+            set => attachedRigidbody.velocity = value;
+        }
 
-            // -- only for debugging
-            intendedDirection = input.intendedDirection;
-            intendedYaw = input.intendedYaw;
-            // --
+        internal float currentDrag {
+            get => attachedRigidbody.drag;
+            set => attachedRigidbody.drag = value;
+        }
+
+        internal PhysicsMaterial2D currentMaterial {
+            get => attachedRigidbody.sharedMaterial;
+            set => attachedRigidbody.sharedMaterial = value;
+        }
+
+
+        float shellTimer = 0;
+        void FixedUpdate() {
+            if (shellTimer > 0) {
+                shellTimer -= Time.deltaTime;
+            } else {
+                if (snail.isInShell != input.intendsShell) {
+                    snail.isInShell = input.intendsShell;
+                    shellTimer = snail.shellCooldown;
+                }
+            }
 
             // ---------------
             // yaw update
 
-            //attachedRigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, input.intendedYaw));
-            //attachedRigidbody.transform.rotation = Quaternion.Euler(0.0f, 0.0f, input.intendedYaw);
-            //attachedRigidbody.transform.up = input.intendedDirection.SwizzleXY();
-
-            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref yawVelocity, yawSmoothTime);
+            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref snail.yawVelocity, snail.yawSmoothTime);
 
             // ---------------
             // velocity update
 
-            velocity = attachedRigidbody.velocity;
-
-            boostStep = input.intendsBoost
+            snail.boostStep = input.intendsBoost
                 ? Time.deltaTime * snail.boostMultiplier * transform.up.SwizzleXY()
                 : Vector2.zero;
 
-            velocity += boostStep;
+            currentVelocity += snail.boostStep;
 
-            attachedRigidbody.velocity = velocity;
+            currentDrag = snail.drag;
+
+            currentMaterial = snail.material;
         }
     }
 }

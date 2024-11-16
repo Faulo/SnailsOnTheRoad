@@ -12,5 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61093b457c3104544b9c413ed552d5bc, type: 3}
   m_Name: Snail
   m_EditorClassIdentifier: 
-  yawSpeed: 10
-  boostMultiplier: 130.23
+  defaultConfig:
+    yawSmoothTime: 0.2
+    boostMultiplier: 200
+    drag: 1
+    material: {fileID: 6200000, guid: ba0e5730c82febe4c9b449e8ad484b1a, type: 2}
+  inShellConfig:
+    yawSmoothTime: 2
+    boostMultiplier: 0
+    drag: 0
+    material: {fileID: 6200000, guid: cf2d2e644215b2343962d0ae53411678, type: 2}
+  shellCooldown: 0.1
+  boostStep: {x: 0, y: 0}
+  velocity: {x: 0, y: 0}
+  yawVelocity: 0.004739791
+  isInShell: 0
