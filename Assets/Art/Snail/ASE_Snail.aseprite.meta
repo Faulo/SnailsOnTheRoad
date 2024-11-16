@@ -25,8 +25,8 @@ ScriptedImporter:
       data:
         key: animator
         includeEmptyAnimations: 0
-        importAsAnimator: 1
-        importAsAnimatorOverride: 0
-        referenceController: {instanceID: 0}
-        importOverridePrefab: 0
+        importAsAnimator: 0
+        importAsAnimatorOverride: 1
+        referenceController: {fileID: 9100000, guid: cfc2aada3d1c0e5428576859045774cd, type: 2}
+        importOverridePrefab: 1
         pixelsPerUnit: 1

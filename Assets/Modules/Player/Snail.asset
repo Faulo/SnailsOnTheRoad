@@ -20,10 +20,11 @@ MonoBehaviour:
   inShellConfig:
     yawSmoothTime: 2
     boostMultiplier: 0
-    drag: 0
+    drag: 0.1
     material: {fileID: 6200000, guid: cf2d2e644215b2343962d0ae53411678, type: 2}
   shellCooldown: 0.1
-  boostStep: {x: 0, y: 0}
+  ground: {fileID: 0}
+  boostStep: 0
   velocity: {x: 0, y: 0}
-  yawVelocity: 0.004739791
+  yawVelocity: 0
   isInShell: 0
