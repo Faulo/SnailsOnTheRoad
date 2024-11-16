@@ -6,7 +6,9 @@ using System.Linq;
 using System.Reflection;
 using MyBox;
 using Slothsoft.UnityExtensions;
+#if UNITY_EDITOR
 using UnityEditor.U2D.Aseprite;
+#endif
 using UnityEngine;
 
 namespace Slothsoft.Aseprite {
