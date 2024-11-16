@@ -33,6 +33,10 @@ namespace Slothsoft.Aseprite.Editor {
         [SerializeField, ConditionalField(nameof(importAsAnimatorOverride))]
         internal bool importOverridePrefab;
 
+        [Header("Sprite Settings")]
+        [SerializeField]
+        public float pixelsPerUnit = 16;
+
         public IEnumerable<(string key, Object asset)> CreateAssets(FileInfo asepriteFile, AsepriteData info, AsepritePalette palette) {
             if (asepriteFile is null) {
                 throw new ArgumentNullException(nameof(asepriteFile));
@@ -53,7 +57,8 @@ namespace Slothsoft.Aseprite.Editor {
 
             var settings = new AsepriteSettings {
                 packSheet = !info.HasLayer("Emission"),
-                extractEmission = info.HasLayer("Emission")
+                extractEmission = info.HasLayer("Emission"),
+                pixelsPerUnit = pixelsPerUnit,
             };
 
             if (AsepriteFile.TryCreateInstance(asepriteFile, out var resource, settings, palette.ApplyMasterPalette)) {

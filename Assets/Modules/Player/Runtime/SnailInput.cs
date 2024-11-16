@@ -14,22 +14,12 @@ namespace SotR.Player {
             this.input.intendedDirection.z = input.Get<Vector2>().y;
         }
 
-        public void OnBrakeLeft(InputValue input) {
-            this.input.intendedLeftBrake = input.Get<float>();
-        }
-
-        public void OnBrakeRight(InputValue input) {
-            this.input.intendedRightBrake = input.Get<float>();
-        }
-
         public void OnBoost(InputValue input) {
             this.input.intendsBoost = input.isPressed;
         }
 
         void Start() {
             input.intendedDirection = Vector3.left;
-            input.intendedLeftBrake = 0;
-            input.intendedRightBrake = 0;
             input.intendsBoost = false;
         }
     }

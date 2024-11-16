@@ -1,5 +1,4 @@
 using MyBox;
-using NSubstitute.Routing.Handlers;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -10,10 +9,6 @@ namespace SotR.Player {
         internal Vector3 intendedDirection;
         [SerializeField]
         internal bool intendsBoost;
-        [SerializeField]
-        internal float intendedLeftBrake;
-        [SerializeField]
-        internal float intendedRightBrake;
 
         internal float cachedIntendedYaw = 0.0f;
 
