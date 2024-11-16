@@ -13,34 +13,19 @@ namespace SotR.Player {
 
         [Space]
         [SerializeField]
-        Rigidbody attachedRigidbody;
+        Rigidbody2D attachedRigidbody;
 
         [SerializeField]
-        Vector3 moveStep;
+        Vector2 boostStep;
 
         [SerializeField]
-        Vector3 boostStep;
-
-        [SerializeField]
-        Vector3 velocity = Vector3.zero;
+        Vector2 velocity = Vector2.zero;
 
         [SerializeField]
         Vector2 intendedDirection;
 
         [SerializeField]
         float intendedYaw;
-
-        [SerializeField]
-        float currentYaw;
-
-        [SerializeField]
-        float yawGap;
-
-        [SerializeField]
-        float yawSpeedStrength;
-
-        [SerializeField]
-        float deltaYaw;
 
         void FixedUpdate() {
             if (!Application.isPlaying) {
@@ -55,27 +40,16 @@ namespace SotR.Player {
             // ---------------
             // yaw update
 
-            currentYaw = Vector3.SignedAngle(Vector3.forward, attachedRigidbody.transform.forward, Vector3.up);
-            yawGap = Mathf.DeltaAngle(currentYaw, input.intendedYaw);
-            yawSpeedStrength = yawGap < 3.0f ? Mathf.Abs(yawGap) / 180.0f : 1.0f;
-            deltaYaw = snail.yawSpeed * yawSpeedStrength * Mathf.Sign(yawGap);
-
-            var deltaRotation = Quaternion.Euler(0.0f, -deltaYaw, 0.0f);
-
-            //attachedRigidbody.angularVelocity = attachedRigidbody.rotation * new Vector3(0.0f, deltaYaw, 0.0f);
-            attachedRigidbody.MoveRotation(Quaternion.Euler(0.0f, input.intendedYaw, 0.0f));
+            attachedRigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, input.intendedYaw));
 
             // ---------------
             // velocity update
 
             velocity = attachedRigidbody.velocity;
-            //velocity = deltaRotation * velocity;
-
-            var direction = velocity.normalized;
 
             boostStep = input.intendsBoost
                 ? Time.deltaTime * snail.boostMultiplier * transform.forward
-                : Vector3.zero;
+                : Vector2.zero;
 
             velocity += boostStep;
 

@@ -6,7 +6,7 @@ namespace SotR.Player {
     [CreateAssetMenu]
     sealed class InputModel : ScriptableObject {
         [SerializeField]
-        internal Vector3 intendedDirection;
+        internal Vector2 intendedDirection;
         [SerializeField]
         internal bool intendsBoost;
 
