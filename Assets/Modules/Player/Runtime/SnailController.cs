@@ -5,6 +5,8 @@ namespace SotR.Player {
     sealed class SnailController : MonoBehaviour {
         [SerializeField]
         Rigidbody2D attachedRigidbody;
+        [SerializeField]
+        Animator attachedAnimator;
 
         [SerializeField, Expandable]
         InputModel input;
@@ -32,8 +34,8 @@ namespace SotR.Player {
             set => attachedRigidbody.sharedMaterial = value;
         }
 
-
         float shellTimer = 0;
+
         void FixedUpdate() {
             if (shellTimer > 0) {
                 shellTimer -= Time.deltaTime;
@@ -43,6 +45,8 @@ namespace SotR.Player {
                     shellTimer = snail.shellCooldown;
                 }
             }
+
+            attachedAnimator.SetBool(nameof(snail.isInShell), snail.isInShell);
 
             // ---------------
             // yaw update
