@@ -16,35 +16,16 @@ ScriptedImporter:
   useMasterPalette: 0
   importVariants:
     processors:
-    - rid: 7364287353780961280
+    - rid: 7364287353780961281
   references:
     version: 2
     RefIds:
-    - rid: 7364287353780961280
-      type: {class: AsepriteSpriteProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+    - rid: 7364287353780961281
+      type: {class: AsepriteAnimatorProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
       data:
-        key: sprite
-        settings:
-          singleLayer: 
-          singleTag: 
-          singleSlice: 
-          useTilesetLayers: 0
-          splitByTileGrid: 0
-          splitByLayers: 0
-          splitByTags: 0
-          splitBySlices: 0
-          exportAsSheet: 1
-          exportInTrueColor: 1
-          packSheet: 1
-          ignoreEmptySprites: 0
-          includeHiddenLayers: 0
-          extractEmission: 1
-          emissionLayerName: Emission
-          emissionTextureName: _EmissionTex
-          textureFilterMode: 0
-          textureWrapMode: 1
-          textureMipChaining: 0
-          pivot: {x: 0.5, y: 0.5}
-          border: {x: 0, y: 0, z: 0, w: 0}
-          pixelsPerUnit: 16
-          importSlicesIfAvailable: 1
+        key: animator
+        includeEmptyAnimations: 0
+        importAsAnimator: 0
+        importAsAnimatorOverride: 0
+        referenceController: {instanceID: 0}
+        importOverridePrefab: 0
