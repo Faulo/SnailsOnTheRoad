@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace SotR.Player {
+    [RequireComponent(typeof(PlayerInput))]
     sealed class PlaneInput : MonoBehaviour {
         [SerializeField, Expandable]
         InputModel input;
