@@ -13,12 +13,4 @@ MonoBehaviour:
   m_Name: Snail
   m_EditorClassIdentifier: 
   yawSpeed: 10
-  moveSpeed: 10
-  dragMinimum: 0
-  dragMaximum: 1
-  boostMultiplier: 12
-  area: 1
-  minHealth: 0
-  maxHealth: 1
-  manoeuvrability: 0.6666667
-  maxManoeuvrability: 15
+  boostMultiplier: 130.23

@@ -27,6 +27,17 @@ namespace SotR.Player {
         [SerializeField]
         float intendedYaw;
 
+        [SerializeField]
+        float yawVelocity;
+
+        [SerializeField]
+        float yawSmoothTime = 0.1f;
+
+        public float currentYaw {
+            get => attachedRigidbody.rotation;
+            set => attachedRigidbody.MoveRotation(value);
+        }
+
         void FixedUpdate() {
             if (!Application.isPlaying) {
                 return;
@@ -40,7 +51,11 @@ namespace SotR.Player {
             // ---------------
             // yaw update
 
-            attachedRigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, input.intendedYaw));
+            //attachedRigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, input.intendedYaw));
+            //attachedRigidbody.transform.rotation = Quaternion.Euler(0.0f, 0.0f, input.intendedYaw);
+            //attachedRigidbody.transform.up = input.intendedDirection.SwizzleXY();
+
+            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref yawVelocity, yawSmoothTime);
 
             // ---------------
             // velocity update
@@ -48,7 +63,7 @@ namespace SotR.Player {
             velocity = attachedRigidbody.velocity;
 
             boostStep = input.intendsBoost
-                ? Time.deltaTime * snail.boostMultiplier * transform.forward
+                ? Time.deltaTime * snail.boostMultiplier * transform.up.SwizzleXY()
                 : Vector2.zero;
 
             velocity += boostStep;

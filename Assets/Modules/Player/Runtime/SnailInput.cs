@@ -12,7 +12,7 @@ namespace SotR.Player {
             this.input.intendedDirection = input.Get<Vector2>();
 
             if (this.input.intendedDirection != Vector2.zero) {
-                this.input.intendedYaw = Vector2.SignedAngle(Vector2.left, this.input.intendedDirection);
+                this.input.intendedYaw = Vector2.SignedAngle(Vector2.up, this.input.intendedDirection);
             }
         }
 

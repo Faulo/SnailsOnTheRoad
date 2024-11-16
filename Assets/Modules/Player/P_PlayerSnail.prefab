@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5548362489046457716}
   - component: {fileID: 3977839682583687519}
-  - component: {fileID: 3439680538475511900}
+  - component: {fileID: 4363800234680045724}
   m_Layer: 0
   m_Name: P_PlayerSnail
   m_TagString: Untagged
@@ -48,7 +48,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -62,8 +62,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &3439680538475511900
-CapsuleCollider2D:
+--- !u!58 &4363800234680045724
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,8 +95,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 8
 --- !u!1 &6698080516136850036
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,15 +146,12 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: 9c42efd1c0cf8fc47bbc618e3c2b9f8a, type: 2}
   snail: {fileID: 11400000, guid: 623994f94a320634f881370ea354817c, type: 2}
   attachedRigidbody: {fileID: 3977839682583687519}
-  moveStep: {x: 0, y: 0}
   boostStep: {x: 0, y: 0}
   velocity: {x: 0, y: 0}
   intendedDirection: {x: 0, y: 0}
   intendedYaw: 0
-  currentYaw: 0
-  yawGap: 0
-  yawSpeedStrength: 0
-  deltaYaw: 0
+  yawVelocity: 0
+  yawSmoothTime: 0.2
 --- !u!114 &8990282543538624235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,13 +221,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6808796746430475017}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5548362489046457716}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6577846258460661393
 SpriteRenderer:
   m_ObjectHideFlags: 0
