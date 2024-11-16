@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Name
-      value: P_LO_Boost
+      value: P_LO_PowerField
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Layer
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2891556694463309217, guid: cd122f30e32b3a1458e57de8ef3c0527, type: 3}
+  m_Sprite: {fileID: -2891556694463309217, guid: 20baacb2516fcc541aca960a6a75c90c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
