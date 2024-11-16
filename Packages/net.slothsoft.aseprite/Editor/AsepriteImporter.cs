@@ -11,7 +11,7 @@ using UnityObject = UnityEngine.Object;
 namespace Slothsoft.Aseprite.Editor {
     [ScriptedImporter(VERSION, null, overrideExts: new[] { AsepriteFile.FILE_EXTENSION_MAIN }, importQueueOffset: 1000)]
     sealed class AsepriteImporter : ScriptedImporter {
-        const int VERSION = 34;
+        const int VERSION = 35;
 
         [SerializeField]
         internal bool useMasterPalette = false;
