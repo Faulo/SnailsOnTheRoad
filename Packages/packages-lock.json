@@ -103,6 +103,20 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.addressables": {
+      "version": "1.22.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.scriptablebuildpipeline": "1.21.25",
+        "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.burst": {
       "version": "1.8.18",
       "depth": 1,
@@ -186,6 +200,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.probuilder": {
       "version": "5.2.3",
       "depth": 0,
@@ -236,6 +257,13 @@
       "dependencies": {
         "com.unity.render-pipelines.core": "14.0.10"
       }
+    },
+    "com.unity.scriptablebuildpipeline": {
+      "version": "1.21.25",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
     },
     "com.unity.searcher": {
       "version": "4.9.2",
@@ -310,10 +338,21 @@
         "com.unity.render-pipelines.core": "14.0.11"
       }
     },
-    "net.slothsoft.unity-extensions": {
-      "version": "3.1.0",
+    "net.slothsoft.aseprite": {
+      "version": "file:net.slothsoft.aseprite",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.addressables": "1.21.20",
+        "com.unity.test-framework": "2.0.1-exp.2",
+        "org.nuget.nsubstitute": "5.3.0",
+        "net.slothsoft.unity-extensions": "3.1.0"
+      }
+    },
+    "net.slothsoft.unity-extensions": {
+      "version": "file:net.slothsoft.unity-extensions",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.ide.visualstudio": "2.0.22",
         "com.unity.test-framework": "2.0.1-exp.2",
@@ -321,8 +360,7 @@
         "com.unity.editorcoroutines": "1.0.0",
         "com.unity.modules.tilemap": "1.0.0",
         "com.unity.modules.physics": "1.0.0"
-      },
-      "url": "https://package.openupm.com"
+      }
     },
     "org.nuget.castle.core": {
       "version": "5.1.1",
@@ -495,6 +533,15 @@
       "depth": 1,
       "source": "builtin",
       "dependencies": {}
+    },
+    "com.unity.modules.unitywebrequestassetbundle": {
+      "version": "1.0.0",
+      "depth": 2,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      }
     },
     "com.unity.modules.vehicles": {
       "version": "1.0.0",

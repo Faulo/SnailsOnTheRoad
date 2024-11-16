@@ -1,0 +1,6 @@
+steamapps
+
+.steamcmd/*
+!.steamcmd/steamcmd.exe
+
+.cache
