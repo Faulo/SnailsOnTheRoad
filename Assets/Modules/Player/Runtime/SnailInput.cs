@@ -9,9 +9,9 @@ namespace SotR.Player {
         InputModel input;
 
         public void OnSetDirection(InputValue input) {
-            this.input.intendedDirection.x = -input.Get<Vector2>().x;
+            this.input.intendedDirection.x = input.Get<Vector2>().x;
             this.input.intendedDirection.y = 0.0f;
-            this.input.intendedDirection.z = -input.Get<Vector2>().y;
+            this.input.intendedDirection.z = input.Get<Vector2>().y;
         }
 
         public void OnBrakeLeft(InputValue input) {
@@ -27,7 +27,7 @@ namespace SotR.Player {
         }
 
         void Start() {
-            input.intendedDirection = Vector3.right;
+            input.intendedDirection = Vector3.left;
             input.intendedLeftBrake = 0;
             input.intendedRightBrake = 0;
             input.intendsBoost = false;
