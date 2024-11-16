@@ -3,22 +3,10 @@ using UnityEngine;
 
 namespace SotR.Player {
     [CreateAssetMenu]
-    public sealed class PlaneModel : ScriptableObject {
-        [Space]
-        [SerializeField]
-        public string displayName;
-        [SerializeField]
-        public Texture2D portrait;
-
+    public sealed class SnailModel : ScriptableObject {
         [Space]
         [SerializeField]
         internal float yawSpeed = 1;
-
-        [SerializeField]
-        internal float pitchSpeed = 1;
-
-        [SerializeField]
-        internal float rollSpeed = 1;
 
         [Space]
         [SerializeField]
@@ -63,7 +51,7 @@ namespace SotR.Player {
 
 #if UNITY_EDITOR
         void OnValidate() {
-            manoeuvrability = (yawSpeed + pitchSpeed + rollSpeed) / maxManoeuvrability;
+            manoeuvrability = yawSpeed / maxManoeuvrability;
             lift = liftCoefficient / maxLift;
             size = maxHealth / maxSize;
             nitro = boostMultiplier / maxNitro;

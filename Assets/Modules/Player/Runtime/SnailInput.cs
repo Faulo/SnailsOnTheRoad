@@ -4,12 +4,14 @@ using UnityEngine.InputSystem;
 
 namespace SotR.Player {
     [RequireComponent(typeof(PlayerInput))]
-    sealed class PlaneInput : MonoBehaviour {
+    sealed class SnailInput : MonoBehaviour {
         [SerializeField, Expandable]
         InputModel input;
 
-        public void OnTilt(InputValue input) {
-            (this.input.intendedRoll, this.input.intendedYaw) = input.Get<Vector2>();
+        public void OnSetDirection(InputValue input) {
+            this.input.intendedDirection.x = -input.Get<Vector2>().x;
+            this.input.intendedDirection.y = 0.0f;
+            this.input.intendedDirection.z = -input.Get<Vector2>().y;
         }
 
         public void OnBrakeLeft(InputValue input) {
@@ -25,10 +27,9 @@ namespace SotR.Player {
         }
 
         void Start() {
-            input.intendedYaw = 0;
+            input.intendedDirection = Vector3.right;
             input.intendedLeftBrake = 0;
             input.intendedRightBrake = 0;
-            input.intendedRoll = 0;
             input.intendsBoost = false;
         }
     }

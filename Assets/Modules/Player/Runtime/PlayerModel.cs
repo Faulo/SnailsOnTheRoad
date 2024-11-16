@@ -23,18 +23,18 @@ namespace SotR.Player {
         }
 
         [SerializeField, Expandable]
-        public PlaneModel plane;
+        public SnailModel snail;
 
         [SerializeField]
         float _health = 1;
         internal float health {
             get => _health;
-            set => _health = Mathf.Clamp(value, 0, plane.maxHealth);
+            set => _health = Mathf.Clamp(value, 0, snail.maxHealth);
         }
 
-        public float normalizedHealth => health / plane.maxHealth;
+        public float normalizedHealth => health / snail.maxHealth;
 
-        public bool isAlive => health > plane.minHealth;
+        public bool isAlive => health > snail.minHealth;
 
         internal bool canBoost => _health > 0;
 
