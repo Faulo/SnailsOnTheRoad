@@ -37,6 +37,14 @@ namespace Slothsoft.Aseprite {
         [SerializeField]
         public bool ignoreEmptySprites = false;
 
+        [Header("Sprite Physics")]
+        [SerializeField]
+        internal uint extrude = 0;
+        [SerializeField]
+        internal SpriteMeshType meshType = SpriteMeshType.FullRect;
+        [SerializeField]
+        internal bool generateFallbackPhysicsShape = false;
+
         [Header("Texture configuration")]
         [SerializeField]
         internal bool includeHiddenLayers = false;

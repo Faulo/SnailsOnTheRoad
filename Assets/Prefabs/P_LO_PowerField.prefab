@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8307063582906282244, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: _collider
+      value: 
+      objectReference: {fileID: 2046714304039959351}
+    - target: {fileID: 8307063582906282244, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 3351994625303540327}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -167,13 +175,5 @@ PolygonCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
-    m_Paths:
-    - - {x: -16, y: 17}
-      - {x: -24, y: 16}
-      - {x: -24, y: -1}
-      - {x: -21, y: -16}
-      - {x: -19, y: -17}
-      - {x: 24, y: -15}
-      - {x: 24, y: 5}
-      - {x: 17, y: 17}
+    m_Paths: []
   m_UseDelaunayMesh: 0
