@@ -6,6 +6,8 @@ using Slothsoft.Aseprite;
 
 namespace Slothsoft.Aseprite {
     static class AssemblyInfo {
+        public const string PACKAGE_ID = "net.slothsoft.aseprite";
+
         public const string NAMESPACE_RUNTIME = "Slothsoft.Aseprite";
         public const string NAMESPACE_EDITOR = "Slothsoft.Aseprite.Editor";
         public const string NAMESPACE_TESTS = "Slothsoft.Aseprite.Tests";

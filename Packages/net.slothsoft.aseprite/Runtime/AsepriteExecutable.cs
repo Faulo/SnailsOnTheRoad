@@ -7,11 +7,11 @@ using UnityDebug = UnityEngine.Debug;
 namespace Slothsoft.Aseprite {
     readonly struct AsepriteExecutable {
 #if UNITY_EDITOR_WIN
-        const string EXECUTABLE = @"Assets/Modules/Aseprite/.windows/Aseprite.exe";
-        const string CACHE = @"Assets/Modules/Aseprite/.cache";
+        const string EXECUTABLE = "Packages/" + AssemblyInfo.PACKAGE_ID + "/.windows/Aseprite.exe";
+        const string CACHE = "Packages/" + AssemblyInfo.PACKAGE_ID + "/.cache";
 #else
-        const string EXECUTABLE = @"Assets/Modules/Aseprite/.linux/aseprite";
-        const string CACHE = @"Assets/Modules/Aseprite/.cache";
+        const string EXECUTABLE = "Packages/" + AssemblyInfo.PACKAGE_ID + "/.linux/aseprite";
+        const string CACHE = "Packages/" + AssemblyInfo.PACKAGE_ID + "/.cache";
 #endif
         static readonly FileInfo executable = new(EXECUTABLE);
         static readonly DirectoryInfo cache = new(CACHE);

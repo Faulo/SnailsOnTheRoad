@@ -21,9 +21,9 @@ namespace Slothsoft.Aseprite.Tests {
             StringAssert.Contains(expected, actual);
         }
 
-        [TestCase("test.file", default, "Assets/Modules/Aseprite/.cache/test.file")]
-        [TestCase("folder/test.file", "", "Assets/Modules/Aseprite/.cache/folder/test.file")]
-        [TestCase("folder/test.file", "png", "Assets/Modules/Aseprite/.cache/folder/test.file.png")]
+        [TestCase("test.file", default, "Packages/" + AssemblyInfo.PACKAGE_ID + "/.cache/test.file")]
+        [TestCase("folder/test.file", "", "Packages/" + AssemblyInfo.PACKAGE_ID + "/.cache/folder/test.file")]
+        [TestCase("folder/test.file", "png", "Packages/" + AssemblyInfo.PACKAGE_ID + "/.cache/folder/test.file.png")]
         public void TestCache(string file, string extension, string expected) {
             if (!AsepriteExecutable.TryFindAseprite(out var exe)) {
                 Assert.Inconclusive();
