@@ -52,6 +52,9 @@ MonoBehaviour:
   attachedAnimator: {fileID: 386009111239276143}
   input: {fileID: 11400000, guid: 9c42efd1c0cf8fc47bbc618e3c2b9f8a, type: 2}
   snail: {fileID: 11400000, guid: 623994f94a320634f881370ea354817c, type: 2}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &3977839682583687519
 Rigidbody2D:
   serializedVersion: 4

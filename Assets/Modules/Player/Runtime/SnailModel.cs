@@ -40,9 +40,22 @@ namespace SotR.Player {
             ? inShellConfig.material
             : defaultConfig.material;
 
+        internal void ResetRuntime(PhysicsMaterial2D ground) {
+            this.ground = ground;
+            boostStep = 0;
+            velocity = Vector2.zero;
+            yawVelocity = 0;
+            isInShell = false;
+        }
+
         [Header("Runtime")]
         [SerializeField]
-        internal Vector2 boostStep;
+        internal PhysicsMaterial2D ground;
+
+        internal float frictionMultiplier => ground.friction;
+
+        [SerializeField]
+        internal float boostStep;
 
         [SerializeField]
         internal Vector2 velocity = Vector2.zero;
@@ -50,7 +63,6 @@ namespace SotR.Player {
         [SerializeField]
         internal float yawVelocity;
 
-        [Space]
         [SerializeField]
         internal bool isInShell;
     }
