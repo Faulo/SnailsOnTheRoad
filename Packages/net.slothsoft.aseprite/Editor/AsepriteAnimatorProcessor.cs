@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using Slothsoft.UnityExtensions.Editor;
@@ -144,21 +145,33 @@ namespace Slothsoft.Aseprite.Editor {
                 }
 
                 if (importAsAnimator) {
-                    var anim = new AnimatorController() {
+                    /// <see cref="AnimatorController.CreateAnimatorControllerAtPath"/>
+
+                    var animatorController = new AnimatorController() {
                         name = $"{resource.name}_AnimatorController.controller"
                     };
 
-                    anim.AddLayer("Animations");
+                    var pushUndo = typeof(AnimatorController).GetProperty("pushUndo", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-                    // state machine missing?
+                    pushUndo.SetValue(animatorController, false);
 
-                    foreach (var clip in animationClips) {
-                        var state = anim.layers[0].stateMachine.AddState(clip.Key);
+                    animatorController.AddLayer("Base Layer");
 
-                        state.motion = clip.Value;
+                    yield return ("animator", animatorController);
+
+                    var stateMachine = animatorController.layers[0].stateMachine;
+                    foreach (var (name, clip) in animationClips) {
+                        var state = stateMachine.AddState(name);
+
+                        state.motion = clip;
+
+                        string key = $"state_{name}";
+                        yield return (key, state);
                     }
 
-                    yield return ("animator", anim);
+                    yield return ("stateMachine", stateMachine);
+
+                    pushUndo.SetValue(animatorController, true);
                 }
 
                 //Animator override import      

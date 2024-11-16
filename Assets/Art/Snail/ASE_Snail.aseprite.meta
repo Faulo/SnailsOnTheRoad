@@ -25,7 +25,7 @@ ScriptedImporter:
       data:
         key: animator
         includeEmptyAnimations: 0
-        importAsAnimator: 0
+        importAsAnimator: 1
         importAsAnimatorOverride: 0
         referenceController: {instanceID: 0}
         importOverridePrefab: 0
