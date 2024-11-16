@@ -13,20 +13,12 @@ MonoBehaviour:
   m_Name: Snail
   m_EditorClassIdentifier: 
   yawSpeed: 10
-  meshPrefab: {fileID: 0}
+  moveSpeed: 10
   dragMinimum: 0
-  dragMaximum: 2
-  dragBrakeMultiplier: 1
-  liftCoefficient: 1
+  dragMaximum: 1
   boostMultiplier: 5
   area: 1
   minHealth: 0
   maxHealth: 1
   manoeuvrability: 0.6666667
   maxManoeuvrability: 15
-  lift: 1
-  maxLift: 1
-  size: 0.2
-  maxSize: 5
-  nitro: 1.6666666
-  maxNitro: 3

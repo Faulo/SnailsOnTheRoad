@@ -7,18 +7,14 @@ namespace SotR.Player {
         [Space]
         [SerializeField]
         internal float yawSpeed = 1;
+        [SerializeField]
+        internal float moveSpeed = 1;
 
         [Space]
-        [SerializeField]
-        internal GameObject meshPrefab;
         [SerializeField]
         internal float dragMinimum = 0;
         [SerializeField]
         internal float dragMaximum = 5;
-        [SerializeField]
-        internal float dragBrakeMultiplier = 1;
-        [SerializeField]
-        internal float liftCoefficient = 1;
         [SerializeField]
         internal float boostMultiplier = 1;
         [SerializeField]
@@ -34,27 +30,9 @@ namespace SotR.Player {
         [SerializeField]
         float maxManoeuvrability = 3;
 
-        [SerializeField, ReadOnly]
-        public float lift = 1;
-        [SerializeField]
-        float maxLift = 1;
-
-        [SerializeField, ReadOnly]
-        public float size = 1;
-        [SerializeField]
-        float maxSize = 5;
-
-        [SerializeField, ReadOnly]
-        public float nitro = 1;
-        [SerializeField]
-        float maxNitro = 3;
-
 #if UNITY_EDITOR
         void OnValidate() {
             manoeuvrability = yawSpeed / maxManoeuvrability;
-            lift = liftCoefficient / maxLift;
-            size = maxHealth / maxSize;
-            nitro = boostMultiplier / maxNitro;
         }
 #endif
     }
