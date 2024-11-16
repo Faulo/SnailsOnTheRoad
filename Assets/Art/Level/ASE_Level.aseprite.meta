@@ -1,5 +1,10 @@
 fileFormatVersion: 2
 guid: 619b4a50dd13f7947a04ee85eef7e21d
+importerOverride:
+  nativeImporterType: 2089858483
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: 37c6705b4df1ae1b85ab20734e5bb081
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -7,174 +12,97 @@ ScriptedImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
-  textureImporterSettings:
-    alphaSource: 1
-    mipMapMode: 0
-    enableMipMap: 0
-    fadeOut: 0
-    borderMipMap: 0
-    mipMapsPreserveCoverage: 0
-    alphaTestReferenceValue: 0.5
-    mipMapFadeDistanceStart: 1
-    mipMapFadeDistanceEnd: 3
-    convertToNormalMap: 0
-    heightScale: 0.25
-    normalMapFilter: 0
-    flipGreenChannel: 0
-    swizzle: 50462976
-    isReadable: 0
-    streamingMipmaps: 0
-    streamingMipmapsPriority: 0
-    vTOnly: 0
-    ignoreMipmapLimit: 0
-    nPOTScale: 1
-    sRGBTexture: 1
-    spriteMode: 2
-    spriteExtrude: 1
-    spriteMeshType: 1
-    alignment: 0
-    spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
-    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-    spriteGenerateFallbackPhysicsShape: 0
-    generateCubemap: 6
-    cubemapConvolution: 0
-    seamlessCubemap: 0
-    alphaIsTransparency: 1
-    spriteTessellationDetail: -1
-    textureType: 8
-    textureShape: 1
-    singleChannelComponent: 0
-    flipbookRows: 0
-    flipbookColumns: 0
-    ignorePngGamma: 0
-    cookieMode: 0
-    filterMode: 0
-    aniso: 1
-    mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
-    normalMap: 0
-    textureFormat: 0
-    maxTextureSize: 0
-    lightmap: 0
-    compressionQuality: 0
-    linearTexture: 0
-    grayScaleToAlpha: 0
-    rGBM: 0
-    cubemapConvolutionSteps: 0
-    cubemapConvolutionExponent: 0
-    maxTextureSizeSet: 0
-    compressionQualitySet: 0
-    textureFormatSet: 0
-    applyGammaDecoding: 0
-  previousAsepriteImporterSettings:
-    fileImportMode: 1
-    importHiddenLayers: 0
-    layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
-    customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 4
-    spritePadding: 0
-    generateModelPrefab: 1
-    generateAnimationClips: 1
-    addSortingGroup: 1
-    addShadowCasters: 0
-  asepriteImporterSettings:
-    fileImportMode: 1
-    importHiddenLayers: 0
-    layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
-    customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 4
-    spritePadding: 0
-    generateModelPrefab: 1
-    generateAnimationClips: 1
-    addSortingGroup: 1
-    addShadowCasters: 0
-  importFileNodeState: 1
-  platformSettingsDirtyTick: 0
-  textureAssetName: 
-  singleSpriteImportData:
-  - name: 
-    originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    spriteID: 
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  animatedSpriteImportData:
-  - name: Snail_CC-29
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 1280
-      height: 1280
-    spriteID: 5e2ce2739a103a841ba0205e8d3251d5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-  spriteSheetImportData: []
-  asepriteLayers:
-  - layerIndex: 0
-    guid: 1643441832
-    name: Snail_CC-29
-    layerFlags: 0
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: ASE_Level
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 1280
-        height: 1280
-      spriteId: 5e2ce2739a103a841ba0205e8d3251d5
-    linkedCells: []
-    parentIndex: -1
-  platformSettings:
-  - name: Default
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  generatePhysicsShape: 0
-  secondarySpriteTextures: []
-  spritePackingTag: 
-  canvasSize: {x: 1280, y: 1280}
+  script: {fileID: 11500000, guid: 873d4f28635220040a6661218521322e, type: 3}
+  useMasterPalette: 0
+  importVariants:
+    processors:
+    - rid: 7364287367897415680
+    - rid: 7364287367897415681
+    - rid: 7364287367897415682
+  references:
+    version: 2
+    RefIds:
+    - rid: 7364287367897415680
+      type: {class: AsepriteSpriteProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+      data:
+        key: sprite
+        settings:
+          singleLayer: 
+          singleTag: 
+          singleSlice: 
+          useTilesetLayers: 0
+          splitByTileGrid: 0
+          splitByLayers: 0
+          splitByTags: 0
+          splitBySlices: 0
+          exportAsSheet: 1
+          exportInTrueColor: 1
+          packSheet: 1
+          ignoreEmptySprites: 0
+          includeHiddenLayers: 0
+          extractEmission: 1
+          emissionLayerName: Emission
+          emissionTextureName: _EmissionTex
+          textureFilterMode: 0
+          textureWrapMode: 1
+          textureMipChaining: 0
+          pivot: {x: 0.5, y: 0.5}
+          border: {x: 0, y: 0, z: 0, w: 0}
+          pixelsPerUnit: 1
+          importSlicesIfAvailable: 1
+    - rid: 7364287367897415681
+      type: {class: AsepriteSpriteProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+      data:
+        key: Treeborder
+        settings:
+          singleLayer: Treeborder
+          singleTag: 
+          singleSlice: 
+          useTilesetLayers: 0
+          splitByTileGrid: 0
+          splitByLayers: 0
+          splitByTags: 0
+          splitBySlices: 0
+          exportAsSheet: 1
+          exportInTrueColor: 1
+          packSheet: 1
+          ignoreEmptySprites: 0
+          includeHiddenLayers: 0
+          extractEmission: 1
+          emissionLayerName: Emission
+          emissionTextureName: _EmissionTex
+          textureFilterMode: 0
+          textureWrapMode: 1
+          textureMipChaining: 0
+          pivot: {x: 0.5, y: 0.5}
+          border: {x: 0, y: 0, z: 0, w: 0}
+          pixelsPerUnit: 1
+          importSlicesIfAvailable: 1
+    - rid: 7364287367897415682
+      type: {class: AsepriteSpriteProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+      data:
+        key: Border wonky
+        settings:
+          singleLayer: Border wonky
+          singleTag: 
+          singleSlice: 
+          useTilesetLayers: 0
+          splitByTileGrid: 0
+          splitByLayers: 0
+          splitByTags: 0
+          splitBySlices: 0
+          exportAsSheet: 1
+          exportInTrueColor: 1
+          packSheet: 1
+          ignoreEmptySprites: 0
+          includeHiddenLayers: 0
+          extractEmission: 1
+          emissionLayerName: Emission
+          emissionTextureName: _EmissionTex
+          textureFilterMode: 0
+          textureWrapMode: 1
+          textureMipChaining: 0
+          pivot: {x: 0.5, y: 0.5}
+          border: {x: 0, y: 0, z: 0, w: 0}
+          pixelsPerUnit: 1
+          importSlicesIfAvailable: 1
