@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b5eb97f6a02e3154092b616a3e120a28
+guid: 8bfddf19e3909e146996c18caafcb58f
 importerOverride:
   nativeImporterType: 2089858483
   scriptedImporterType:
@@ -16,11 +16,11 @@ ScriptedImporter:
   useMasterPalette: 0
   importVariants:
     processors:
-    - rid: 7364287353780961281
+    - rid: 101759075607117824
   references:
     version: 2
     RefIds:
-    - rid: 7364287353780961281
+    - rid: 101759075607117824
       type: {class: AsepriteAnimatorProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
       data:
         key: animator
