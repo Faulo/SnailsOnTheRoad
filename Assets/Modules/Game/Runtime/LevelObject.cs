@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SotR.Game {
+    [ExecuteAlways]
     sealed class LevelObject : MonoBehaviour {
         [SerializeField]
         SpriteRenderer _renderer;
@@ -12,8 +13,36 @@ namespace SotR.Game {
         [SerializeField, Range(0.001f, 10)]
         float _tolerance = 0.05f;
 
-        readonly List<Vector2> _points = new();
-        readonly List<Vector2> _simplifiedPoints = new();
+        record SpriteHash(Sprite sprite, float tolerance, bool flipX, bool flipY);
+
+        SpriteHash _hash;
+
+        void UpdatePolygonCollider2DIfHashDiffers(PolygonCollider2D collider, SpriteHash hash) {
+            if (_hash != hash) {
+                _hash = hash;
+
+                var points = new List<Vector2>();
+                var simplifiedPoints = new List<Vector2>();
+
+                var multiplier = new Vector2Int(
+                    hash.flipX ? -1 : 1,
+                    hash.flipY ? -1 : 1
+                );
+
+                collider.pathCount = hash.sprite.GetPhysicsShapeCount();
+
+                for (int i = 0; i < collider.pathCount; i++) {
+                    hash.sprite.GetPhysicsShape(i, points);
+
+                    for (int j = 0; j < points.Count; j++) {
+                        points[j] *= multiplier;
+                    }
+
+                    LineUtility.Simplify(points, hash.tolerance, simplifiedPoints);
+                    collider.SetPath(i, simplifiedPoints);
+                }
+            }
+        }
 
         void UpdatePolygonCollider2D() {
             if (!_renderer && !TryGetComponent(out _renderer)) {
@@ -24,15 +53,8 @@ namespace SotR.Game {
                 return;
             }
 
-            if (this is { _renderer: { sprite: Sprite sprite }, _collider: PolygonCollider2D collider }) {
-                collider.pathCount = sprite.GetPhysicsShapeCount();
-                Debug.Log(collider.pathCount);
-
-                for (int i = 0; i < collider.pathCount; i++) {
-                    sprite.GetPhysicsShape(i, _points);
-                    LineUtility.Simplify(_points, _tolerance, _simplifiedPoints);
-                    collider.SetPath(i, _simplifiedPoints);
-                }
+            if (this is { _renderer: { sprite: Sprite sprite, flipX: bool flipX, flipY: bool flipY }, _collider: PolygonCollider2D collider }) {
+                UpdatePolygonCollider2DIfHashDiffers(collider, new(sprite, _tolerance, flipX, flipY));
             }
         }
 
@@ -41,7 +63,7 @@ namespace SotR.Game {
         }
 
 #if UNITY_EDITOR
-        void OnValidate() {
+        void Update() {
             UpdatePolygonCollider2D();
         }
 #endif

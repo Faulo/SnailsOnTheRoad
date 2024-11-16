@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Name
-      value: P_LO_PowerField
+      value: P_LO_Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Layer

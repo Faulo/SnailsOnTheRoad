@@ -4,7 +4,8 @@
     "references": [
         "MyBox",
         "Slothsoft.UnityExtensions",
-        "SotR.Player"
+        "SotR.Player",
+        "System.Runtime.CompilerServices"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
