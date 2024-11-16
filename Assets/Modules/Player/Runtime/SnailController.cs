@@ -3,28 +3,28 @@ using UnityEngine;
 
 namespace SotR.Player {
     [ExecuteAlways]
-    sealed class PlaneController : MonoBehaviour {
+    sealed class SnailController : MonoBehaviour {
 
         [SerializeField, Expandable]
         InputModel input;
         [SerializeField, Expandable]
         PlayerModel player;
 
-        PlaneModel plane => player.plane;
+        SnailModel snail => player.snail;
 
         [Space]
         [SerializeField]
         Rigidbody attachedRigidbody;
 
-        GameObject modelPrefab => plane
-            ? plane.meshPrefab
+        GameObject modelPrefab => snail
+            ? snail.meshPrefab
             : null;
         GameObject modelInstance => transform.childCount > 0
             ? transform.GetChild(0).gameObject
             : null;
 
         void Start() {
-            player.health = plane.maxHealth;
+            player.health = snail.maxHealth;
             player.isBoosting = false;
             player.leftBrake = 0;
             player.rightBrake = 0;
@@ -79,54 +79,76 @@ namespace SotR.Player {
         }
 
         [SerializeField]
+        Vector3 moveStep;
+
+        [SerializeField]
         Vector3 boostStep;
 
         [SerializeField]
-        Vector3 liftStep;
+        Vector3 velocity = Vector3.zero;
 
         [SerializeField]
-        Vector3 velocity = Vector3.zero;
+        Vector2 intendedDirection;
+
+        [SerializeField]
+        float intendedYaw;
+
+        [SerializeField]
+        float currentYaw;
+
+        [SerializeField]
+        float yawGap;
+
+        [SerializeField]
+        float yawSpeedStrength;
+
+        [SerializeField]
+        float deltaYaw;
 
         void FixedUpdate() {
             if (!Application.isPlaying) {
                 return;
             }
 
-            if (!player.isAlive || transform.position.y < 0) {
-                ProcessDeath();
-                return;
-            }
+            //if (!player.isAlive || transform.position.y < 0) {
+            //    ProcessDeath();
+            //    return;
+            //}
+
+            // -- only for debugging
+            intendedDirection = input.intendedDirection;
+            intendedYaw = input.intendedYaw();
+            // --
 
             player.leftBrake = input.intendedLeftBrake;
             player.rightBrake = input.intendedRightBrake;
 
-            float deltaYaw = plane.yawSpeed * input.intendedYaw;
-            float deltaPitch = plane.pitchSpeed * input.intendedPitch;
-            float deltaRoll = plane.rollSpeed * input.intendedRoll;
+            currentYaw = Vector3.SignedAngle(Vector3.forward, attachedRigidbody.transform.forward, Vector3.up);
+            yawGap = Mathf.DeltaAngle(currentYaw, input.intendedYaw());
+            yawSpeedStrength = yawGap < 3.0f ? Mathf.Abs(yawGap) / 180.0f : 1.0f;
+            deltaYaw = snail.yawSpeed * yawSpeedStrength * Mathf.Sign(yawGap);
 
-            var deltaRotation = Quaternion.Euler(-deltaYaw, deltaPitch, -deltaRoll);
+            var deltaRotation = Quaternion.Euler(0.0f, -deltaYaw, 0.0f);
 
-            attachedRigidbody.angularVelocity = attachedRigidbody.rotation * new Vector3(deltaYaw, deltaPitch, -deltaRoll);
+            attachedRigidbody.angularVelocity = attachedRigidbody.rotation * new Vector3(0.0f, deltaYaw, 0.0f);
 
             velocity = attachedRigidbody.velocity;
-
             velocity = deltaRotation * velocity;
 
             var direction = velocity.normalized;
 
             ProcessAlignment(direction);
-
             ProcessBoost();
 
-            boostStep = player.isBoosting
-                ? Time.deltaTime * plane.boostMultiplier * transform.forward
+            moveStep = input.intendedDirection != Vector3.zero
+                ? Time.deltaTime * 2.0f * transform.forward
                 : Vector3.zero;
 
-            liftStep = velocity == Vector3.zero
-                ? Vector3.zero
-                : Time.deltaTime * plane.liftCoefficient * plane.area * player.normalizedHealth * velocity.sqrMagnitude * player.alignment * transform.up;
+            boostStep = player.isBoosting
+                ? Time.deltaTime * snail.boostMultiplier * transform.forward
+                : Vector3.zero;
 
-            velocity += boostStep + liftStep;
+            velocity += moveStep + boostStep;
 
             attachedRigidbody.velocity = velocity;
         }
@@ -138,13 +160,13 @@ namespace SotR.Player {
 
             player.alignment = Mathf.InverseLerp(0, 1, dot);
 
-            attachedRigidbody.drag = Mathf.Lerp(plane.dragMaximum, plane.dragMinimum, player.alignment) * plane.area * player.normalizedHealth;
-            attachedRigidbody.drag += player.leftBrake * plane.dragBrakeMultiplier;
-            attachedRigidbody.drag += player.rightBrake * plane.dragBrakeMultiplier;
+            attachedRigidbody.drag = Mathf.Lerp(snail.dragMaximum, snail.dragMinimum, player.alignment) * snail.area; // * player.normalizedHealth
+            attachedRigidbody.drag += player.leftBrake * snail.dragBrakeMultiplier;
+            attachedRigidbody.drag += player.rightBrake * snail.dragBrakeMultiplier;
         }
 
         void ProcessBoost() {
-            player.isBoosting = input.intendsBoost && player.canBoost;
+            player.isBoosting = input.intendsBoost; // && player.canBoost
 
             if (player.isBoosting) {
                 player.health -= Mathf.Clamp01(Time.deltaTime * player.burnSpeed);

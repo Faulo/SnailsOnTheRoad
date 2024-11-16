@@ -9,28 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a2d24977bcbb9499d4e0c069b4c6df, type: 3}
-  m_Name: Plane_Cube
+  m_Script: {fileID: 11500000, guid: 61093b457c3104544b9c413ed552d5bc, type: 3}
+  m_Name: Snail
   m_EditorClassIdentifier: 
-  displayName: 
-  portrait: {fileID: 0}
-  yawSpeed: 1
-  pitchSpeed: 1
-  rollSpeed: 1
+  yawSpeed: 10
   meshPrefab: {fileID: 0}
   dragMinimum: 0
-  dragMaximum: 5
+  dragMaximum: 2
   dragBrakeMultiplier: 1
   liftCoefficient: 1
-  boostMultiplier: 1
+  boostMultiplier: 5
   area: 1
   minHealth: 0
   maxHealth: 1
-  manoeuvrability: 1
-  maxManoeuvrability: 3
+  manoeuvrability: 0.6666667
+  maxManoeuvrability: 15
   lift: 1
   maxLift: 1
   size: 0.2
   maxSize: 5
-  nitro: 0.33333334
+  nitro: 1.6666666
   maxNitro: 3
