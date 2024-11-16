@@ -16,66 +16,10 @@ namespace SotR.Player {
         [SerializeField]
         Rigidbody attachedRigidbody;
 
-        GameObject modelPrefab => snail
-            ? snail.meshPrefab
-            : null;
-        GameObject modelInstance => transform.childCount > 0
-            ? transform.GetChild(0).gameObject
-            : null;
-
         void Start() {
             player.health = snail.maxHealth;
             player.isBoosting = false;
-            player.leftBrake = 0;
-            player.rightBrake = 0;
             player.deadTime = 0;
-
-            RecreateModel();
-        }
-
-#if UNITY_EDITOR
-        void Update() {
-            RecreateModel();
-        }
-#endif
-
-        void RecreateModel() {
-            if (modelPrefab) {
-                if (modelInstance && modelInstance.name != modelPrefab.name) {
-                    DestroyModel();
-                }
-
-                if (!modelInstance) {
-                    CreateModel();
-                }
-            } else {
-                DestroyModel();
-            }
-        }
-
-        void DestroyModel() {
-            if (modelInstance) {
-                if (Application.isPlaying) {
-                    Destroy(modelInstance);
-                } else {
-                    DestroyImmediate(modelInstance);
-                }
-            }
-        }
-
-        void CreateModel() {
-#if UNITY_EDITOR
-            if (Application.isPlaying) {
-#endif
-                var instance = Instantiate(modelPrefab, transform);
-                instance.name = modelPrefab.name;
-#if UNITY_EDITOR
-            } else {
-                var instance = UnityEditor.PrefabUtility.InstantiatePrefab(modelPrefab, transform);
-                instance.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
-                instance.name = modelPrefab.name;
-            }
-#endif
         }
 
         [SerializeField]
@@ -120,9 +64,6 @@ namespace SotR.Player {
             intendedYaw = input.intendedYaw();
             // --
 
-            player.leftBrake = input.intendedLeftBrake;
-            player.rightBrake = input.intendedRightBrake;
-
             currentYaw = Vector3.SignedAngle(Vector3.forward, attachedRigidbody.transform.forward, Vector3.up);
             yawGap = Mathf.DeltaAngle(currentYaw, input.intendedYaw());
             yawSpeedStrength = yawGap < 3.0f ? Mathf.Abs(yawGap) / 180.0f : 1.0f;
@@ -141,7 +82,7 @@ namespace SotR.Player {
             ProcessBoost();
 
             moveStep = input.intendedDirection != Vector3.zero
-                ? Time.deltaTime * 2.0f * transform.forward
+                ? Time.deltaTime * snail.moveSpeed * transform.forward
                 : Vector3.zero;
 
             boostStep = player.isBoosting
@@ -160,9 +101,8 @@ namespace SotR.Player {
 
             player.alignment = Mathf.InverseLerp(0, 1, dot);
 
-            attachedRigidbody.drag = Mathf.Lerp(snail.dragMaximum, snail.dragMinimum, player.alignment) * snail.area; // * player.normalizedHealth
-            attachedRigidbody.drag += player.leftBrake * snail.dragBrakeMultiplier;
-            attachedRigidbody.drag += player.rightBrake * snail.dragBrakeMultiplier;
+            attachedRigidbody.drag = snail.dragMaximum;
+            // attachedRigidbody.drag = Mathf.Lerp(snail.dragMaximum, snail.dragMinimum, player.alignment) * snail.area * player.normalizedHealth;
         }
 
         void ProcessBoost() {
@@ -176,8 +116,6 @@ namespace SotR.Player {
         void ProcessDeath() {
             player.health -= Mathf.Clamp01(Time.deltaTime * player.burnSpeed);
             player.isBoosting = false;
-            player.leftBrake = 0;
-            player.rightBrake = 0;
 
             if (Mathf.Approximately(attachedRigidbody.velocity.sqrMagnitude, 0)) {
                 ProcessDeathTimeout();
