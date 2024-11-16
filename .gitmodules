@@ -1,4 +1,4 @@
 [submodule "Packages/net.slothsoft.unity-extensions"]
 	path = Packages/net.slothsoft.unity-extensions
-	url = https://github.com/Faulo/SnailsOnTheRoad
+	url = https://github.com/Faulo/UnityExtensions
 	branch = main
