@@ -44,7 +44,7 @@ namespace SotR.Game {
             }
         }
 
-        void UpdatePolygonCollider2D() {
+        internal void UpdatePolygonCollider2D() {
             if (!_renderer && !TryGetComponent(out _renderer)) {
                 return;
             }

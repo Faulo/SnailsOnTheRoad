@@ -5,7 +5,8 @@
         "MyBox",
         "Slothsoft.UnityExtensions",
         "SotR.Player",
-        "System.Runtime.CompilerServices"
+        "System.Runtime.CompilerServices",
+        "Slothsoft.Aseprite"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

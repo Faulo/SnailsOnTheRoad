@@ -38,7 +38,7 @@ ScriptedImporter:
           packSheet: 1
           ignoreEmptySprites: 0
           extrude: 0
-          meshType: 0
+          meshType: 1
           generateFallbackPhysicsShape: 1
           includeHiddenLayers: 0
           extractEmission: 1

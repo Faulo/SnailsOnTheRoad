@@ -7,6 +7,8 @@ namespace SotR.Player {
         [SerializeField]
         Rigidbody2D attachedRigidbody;
         [SerializeField]
+        Collider2D attachedCollider;
+        [SerializeField]
         Animator attachedAnimator;
 
         [SerializeField, Expandable]
@@ -98,6 +100,37 @@ namespace SotR.Player {
             currentDrag = snail.drag;
 
             currentMaterial = snail.material;
+        }
+
+        /// <summary>
+        /// <seealso href="https://discussions.unity.com/t/can-i-make-2d-physics-bounce-the-same-as-the-multiply-bounce-combine-mode-in-3d-physics/673281/9"/>
+        /// </summary>
+        /// <param name="other"></param>
+        void OnCollisionEnter2D(Collision2D collision) {
+            float myBounciness = GetBounciness(attachedRigidbody, attachedCollider);
+            float theirBounciness = GetBounciness(collision.rigidbody, collision.collider);
+
+            // Unity already collided by using the maximum bounciness, so if the average is lower, we gotta reduce it.
+            if (Mathf.Approximately(myBounciness, theirBounciness)) {
+                return;
+            }
+
+            float average = (myBounciness + theirBounciness) * 0.5f;
+            float maximum = Mathf.Max(myBounciness, theirBounciness);
+
+            attachedRigidbody.velocity *= average / maximum;
+        }
+
+        static float GetBounciness(Rigidbody2D rigidbody, Collider2D collider) {
+            if (rigidbody is { sharedMaterial: { bounciness: float rigidbodyBounciness } }) {
+                return rigidbodyBounciness;
+            }
+
+            if (collider is { sharedMaterial: { bounciness: float colliderBounciness } }) {
+                return colliderBounciness;
+            }
+
+            return 0.5f;
         }
     }
 }
