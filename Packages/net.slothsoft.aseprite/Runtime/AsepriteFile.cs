@@ -309,7 +309,7 @@ namespace Slothsoft.Aseprite {
                             pivot = settings.pivot;
                         }
 
-                        var sprite = Sprite.Create(asset.albedo, rect, pivot, settings.pixelsPerUnit, 0, SpriteMeshType.FullRect, border, false, secondaryTextures);
+                        var sprite = Sprite.Create(asset.albedo, rect, pivot, settings.pixelsPerUnit, settings.extrude, settings.meshType, border, settings.generateFallbackPhysicsShape, secondaryTextures);
 
                         string[] name = frame.filename.Split('_');
                         sprite.name = string.Join('_', name[..^1].Append(slice.name).Append(name[^1]));
@@ -327,7 +327,7 @@ namespace Slothsoft.Aseprite {
 
                     var rect = (Rect)frame.frame;
                     rect.y = asset.info.meta.size.h - rect.y - rect.height;
-                    var sprite = Sprite.Create(asset.albedo, rect, settings.pivot, settings.pixelsPerUnit, 0, SpriteMeshType.FullRect, settings.border, false, secondaryTextures);
+                    var sprite = Sprite.Create(asset.albedo, rect, settings.pivot, settings.pixelsPerUnit, settings.extrude, settings.meshType, settings.border, settings.generateFallbackPhysicsShape, secondaryTextures);
 
                     string[] name = frame.filename.Split('.');
                     name[^2] = string.Join('_', name[^2].Split('_')[..^1].Append(f.ToString()));
