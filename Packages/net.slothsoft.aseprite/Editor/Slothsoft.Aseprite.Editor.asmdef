@@ -1,0 +1,23 @@
+{
+    "name": "Slothsoft.Aseprite.Editor",
+    "rootNamespace": "",
+    "references": [
+        "MyBox",
+        "Slothsoft.UnityExtensions.Editor",
+        "Slothsoft.UnityExtensions",
+        "Slothsoft.Aseprite",
+        "System.Runtime.CompilerServices",
+        "Unity.Settings.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

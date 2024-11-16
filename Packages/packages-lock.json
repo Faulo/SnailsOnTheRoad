@@ -338,8 +338,8 @@
         "com.unity.render-pipelines.core": "14.0.11"
       }
     },
-    "net.slothsoft.aseprite-importer": {
-      "version": "file:net.slothsoft.aseprite-importer",
+    "net.slothsoft.aseprite": {
+      "version": "file:net.slothsoft.aseprite",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
