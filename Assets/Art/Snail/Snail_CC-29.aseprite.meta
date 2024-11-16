@@ -15,7 +15,17 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 873d4f28635220040a6661218521322e, type: 3}
   useMasterPalette: 0
   importVariants:
-    processors: []
+    processors:
+    - rid: 7364287364313120769
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 7364287364313120769
+      type: {class: AsepriteAnimatorProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+      data:
+        key: animator
+        includeEmptyAnimations: 0
+        importAsAnimator: 0
+        importAsAnimatorOverride: 0
+        referenceController: {instanceID: 0}
+        importOverridePrefab: 0

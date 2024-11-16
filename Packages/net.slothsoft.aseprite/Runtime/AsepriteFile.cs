@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using MyBox;
 using Slothsoft.UnityExtensions;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 namespace Slothsoft.Aseprite {
@@ -355,9 +358,8 @@ namespace Slothsoft.Aseprite {
 
         public static bool TryCreatePalette(FileInfo asepriteFile, out AsepritePalette palette) {
             try {
-                using var aseprite = UnityEditor.U2D.Aseprite.AsepriteReader.ReadFile(asepriteFile.ToString());
-                var paletteChunk = GetPaletteChunk(aseprite);
-                palette = new(paletteChunk.entries.Select(entry => entry.color));
+                using var aseprite = AsepriteReader.ReadFile(asepriteFile.ToString());
+                palette = new(GetPaletteChunkColors(aseprite));
                 return true;
             } catch (Exception e) {
                 Debug.LogException(e);
@@ -366,12 +368,25 @@ namespace Slothsoft.Aseprite {
             }
         }
 
-        static UnityEditor.U2D.Aseprite.PaletteChunk GetPaletteChunk(UnityEditor.U2D.Aseprite.AsepriteFile file) {
+        const string PALETTE_PROVIDER_INTERFACE = "UnityEditor.U2D.Aseprite.IPaletteProvider";
+        static readonly Type paletteProviderInterface = typeof(PaletteChunk)
+            .Assembly
+            .GetType(PALETTE_PROVIDER_INTERFACE, true);
+
+        const string ENTRIES_PROPERTY = "entries";
+        static readonly PropertyInfo entriesProperty = paletteProviderInterface
+            .GetProperty(ENTRIES_PROPERTY, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+        static IEnumerable<Color32> GetPaletteChunkColors(UnityEditor.U2D.Aseprite.AsepriteFile file) {
             try {
                 foreach (var frame in file.frameData) {
                     foreach (var chunk in frame.chunks) {
-                        if (chunk is UnityEditor.U2D.Aseprite.PaletteChunk paletteChunk) {
-                            return paletteChunk;
+                        if (chunk is PaletteChunk { entries: ReadOnlyCollection<PaletteEntry> paletteEntries }) {
+                            return paletteEntries.Select(entry => entry.color);
+                        }
+
+                        if (paletteProviderInterface.IsAssignableFrom(chunk.GetType()) && entriesProperty.GetValue(chunk) is ReadOnlyCollection<PaletteEntry> interfaceEntries) {
+                            return interfaceEntries.Select(entry => entry.color);
                         }
                     }
                 }
