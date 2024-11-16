@@ -1,0 +1,4 @@
+steamapps
+
+.steamcmd/*
+!.steamcmd/steamcmd.exe

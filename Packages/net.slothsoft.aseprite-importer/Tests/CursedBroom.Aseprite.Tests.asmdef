@@ -1,0 +1,32 @@
+{
+    "name": "CursedBroom.Aseprite.Tests",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "CursedBroom.TestRunner",
+        "CursedBroom.Aseprite.Editor",
+        "CursedBroom.Aseprite",
+        "System.Runtime.CompilerServices",
+        "Slothsoft.UnityExtensions",
+        "CursedBroom.Core",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
