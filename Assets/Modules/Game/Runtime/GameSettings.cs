@@ -25,11 +25,38 @@ namespace SotR.Game {
         }
 
         [SerializeField]
-        GameObject[] levels = Array.Empty<GameObject>();
+        SceneReference endingScene = new();
+        public void LoadEnding() {
+            endingScene.LoadSceneAsync();
+        }
 
         [SerializeField]
-        int currentLevelIndex = 0;
+        GameObject[] levels = Array.Empty<GameObject>();
+
+        [ContextMenu(nameof(ResetRuntime))]
+        internal void ResetRuntime() {
+            currentLevelIndex = 0;
+            maximumLevelIndex = 1;
+            state = LevelState.Invalid;
+            timer = 0;
+        }
+
+        [Header("Runtime")]
+        [SerializeField, Range(0, 10)]
+        internal int currentLevelIndex = 0;
+        [SerializeField]
+        internal int maximumLevelIndex = 1;
+        [SerializeField]
+        internal LevelState state = LevelState.Invalid;
+        [SerializeField]
+        internal float timer = 0;
 
         internal GameObject currentLevelPrefab => levels.ElementAtOrDefault(currentLevelIndex);
+
+        internal bool canLoadPreviousLevel => currentLevelIndex > 0;
+
+        internal bool canLoadNextLevel => currentLevelIndex < Mathf.Min(maximumLevelIndex, levels.Length);
+
+        internal bool currentLevelIsLastLevel => currentLevelIndex == levels.Length - 1;
     }
 }

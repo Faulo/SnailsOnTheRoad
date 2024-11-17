@@ -12,6 +12,20 @@ namespace SotR.Game {
         GameObject loadedLevelPrefab;
         GameObject loadedLevelInstance;
 
+        internal Level loadLevel { get; private set; }
+
+        public void AllowNextLevel() {
+            settings.maximumLevelIndex = settings.currentLevelIndex + 1;
+        }
+
+        public void LoadNextLevel() {
+            settings.currentLevelIndex++;
+        }
+
+        public void LoadPreviousLevel() {
+            settings.currentLevelIndex--;
+        }
+
         void Update() {
             if (!settings || !levelPivot) {
                 return;
@@ -30,6 +44,8 @@ namespace SotR.Game {
                         loadedLevelInstance.hideFlags = HideFlags.DontSave;
 #endif
                     }
+
+                    loadLevel = loadedLevelInstance.GetComponent<Level>();
                 }
             }
         }
