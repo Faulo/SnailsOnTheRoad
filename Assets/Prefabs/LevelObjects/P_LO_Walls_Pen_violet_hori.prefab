@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8960549147883167489
+--- !u!1001 &1199354742988670295
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -70,12 +70,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399427345424118583, guid: 324dfe26fa1d47a4e8fe1873722f85d7, type: 3}
       propertyPath: m_Name
-      value: P_LO_Walls_Pen_lightblue
+      value: P_LO_Walls_Pen_violet_hori
       objectReference: {fileID: 0}
     - target: {fileID: 3351994625303540327, guid: 324dfe26fa1d47a4e8fe1873722f85d7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5138665661533541460, guid: e970cef2e36476749a664e4f1cc06eb2, type: 3}
+      objectReference: {fileID: -4864488839028204758, guid: e970cef2e36476749a664e4f1cc06eb2, type: 3}
     - target: {fileID: 8878200935224400588, guid: 324dfe26fa1d47a4e8fe1873722f85d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
