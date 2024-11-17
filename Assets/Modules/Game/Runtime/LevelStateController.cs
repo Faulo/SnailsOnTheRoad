@@ -25,7 +25,11 @@ namespace SotR.Game {
                     break;
                 case (LevelState.Racing, LevelState.Goal):
                     if (settings.timer >= 0) {
-                        onFinishRace.Invoke();
+                        if (settings.currentLevelIsLastLevel) {
+                            onFinishGame.Invoke();
+                        } else {
+                            onFinishRace.Invoke();
+                        }
                     } else {
                         onFailRace.Invoke();
                     }
@@ -59,16 +63,21 @@ namespace SotR.Game {
 
         [SerializeField]
         internal UnityEvent onStartRace = new();
-
         [SerializeField]
         internal UnityEvent onAbortRace = new();
         [SerializeField]
         internal UnityEvent onFinishRace = new();
         [SerializeField]
         internal UnityEvent onFailRace = new();
+
+        [Space]
         [SerializeField]
         internal UnityEvent onLoadNextLevel = new();
         [SerializeField]
         internal UnityEvent onLoadPreviousLevel = new();
+
+        [Space]
+        [SerializeField]
+        internal UnityEvent onFinishGame = new();
     }
 }

@@ -1303,6 +1303,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onFinishGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2b1d89dab33b39a41b037c50cf5abc02, type: 2}
+        m_TargetAssemblyTypeName: SotR.Game.GameSettings, SotR.Game
+        m_MethodName: LoadEnding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1417417201084637488
 MonoBehaviour:
   m_ObjectHideFlags: 0
