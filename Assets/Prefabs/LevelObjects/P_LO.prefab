@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1840229378317837803
 Transform:
@@ -49,6 +49,7 @@ MonoBehaviour:
   _renderer: {fileID: 5492376357498539328}
   _collider: {fileID: 9140928148526531600}
   _tolerance: 0.0625
+  snapTransformToPixelGrid: 1
 --- !u!212 &5492376357498539328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 52}
+    oldSize: {x: 48, y: 64}
     newSize: {x: 48, y: 52}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,12 +146,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -16, y: 17}
-      - {x: -24, y: 16}
-      - {x: -24, y: -1}
+    - - {x: -24, y: 17}
+      - {x: -24, y: -7}
       - {x: -21, y: -16}
       - {x: -19, y: -17}
-      - {x: 24, y: -15}
-      - {x: 24, y: 5}
-      - {x: 17, y: 17}
+      - {x: 24, y: -16}
+      - {x: 24, y: 3}
+      - {x: 22, y: 15}
+      - {x: 19, y: 17}
   m_UseDelaunayMesh: 0

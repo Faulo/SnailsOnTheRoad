@@ -58,6 +58,7 @@ namespace SotR.Player {
         static int overlapCount = 0;
 
         void Start() {
+            input.intendedDirection = transform.up;
             currentMaterial = new PhysicsMaterial2D();
         }
 
