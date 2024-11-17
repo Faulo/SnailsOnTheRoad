@@ -30,6 +30,11 @@ namespace SotR.Player {
 
         public float currentSpeed => currentVelocity.magnitude;
 
+        [SerializeField]
+        float maximumSpeed = 150;
+
+        public float currentSpeedNormalized => currentSpeed / maximumSpeed;
+
         public bool isInShell => model.isInShell;
 
         float currentDrag {

@@ -20,18 +20,10 @@ namespace SotR.Game {
         }
 
         public void EffectSnail(SnailController controller) {
-            if (!controller.isInShell) {
-                return;
-            }
-
             controller.currentVelocity = Vector2.SmoothDamp(controller.currentVelocity, targetVelocity, ref _acceleration, _boostTime);
         }
 
         public void ExitSnail(SnailController controller) {
-            if (!controller.isInShell) {
-                return;
-            }
-
             controller.currentVelocity = targetVelocity;
         }
     }

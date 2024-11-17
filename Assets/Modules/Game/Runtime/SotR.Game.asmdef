@@ -6,7 +6,8 @@
         "Slothsoft.UnityExtensions",
         "SotR.Player",
         "System.Runtime.CompilerServices",
-        "Slothsoft.Aseprite"
+        "Slothsoft.Aseprite",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
