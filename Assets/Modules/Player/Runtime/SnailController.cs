@@ -28,6 +28,8 @@ namespace SotR.Player {
             set => attachedRigidbody.velocity = value;
         }
 
+        public float currentSpeed => currentVelocity.magnitude;
+
         public bool isInShell => model.isInShell;
 
         float currentDrag {
@@ -62,9 +64,9 @@ namespace SotR.Player {
         void FixedUpdate() {
             UpdateGround();
 
-            UpdateEffectors();
-
             UpdateProfiles();
+
+            UpdateEffectors();
 
             UpdateSnail();
 
@@ -103,7 +105,7 @@ namespace SotR.Player {
 
         void UpdateProfiles() {
             foreach (var profile in model.knownProfiles) {
-                model.LoseProfile(profile, Time.deltaTime);
+                model.LoseProfile(profile, Time.deltaTime * currentSpeed);
             }
         }
 

@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snail: {fileID: 2765313891438037286}
   _particleSystem: {fileID: 3571882800161171457}
-  _emissionMultiplier: 100
+  _emissionMultiplier: 10
   _defaultEmission: 1
 --- !u!198 &3571882800161171457
 ParticleSystem:

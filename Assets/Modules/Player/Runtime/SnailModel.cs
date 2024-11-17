@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace SotR.Player {
@@ -29,6 +30,9 @@ namespace SotR.Player {
         internal float shellCooldown = 0.1f;
         [SerializeField]
         float profileMaximum = 1;
+        [SerializeField]
+        float profileLossMultiplier = 1;
+
         [SerializeField]
         internal ProfileModel defaultProfile => isInShell
             ? inShellConfig.profile
@@ -78,6 +82,11 @@ namespace SotR.Player {
         [SerializeField]
         internal bool isInShell;
 
+#if UNITY_EDITOR
+        [SerializeField]
+        SerializableKeyValuePairs<ProfileModel, float> debugProfiles = new();
+#endif
+
         internal readonly HashSet<ProfileModel> knownProfiles = new();
         internal readonly Dictionary<ProfileModel, float> profiles = new();
 
@@ -100,19 +109,28 @@ namespace SotR.Player {
             if (profiles.TryGetValue(profile, out float value)) {
                 profiles[profile] = Mathf.Min(profileMaximum, value + gain);
             } else {
-                profiles.Add(profile, Mathf.Min(profileMaximum, value));
+                profiles.Add(profile, Mathf.Min(profileMaximum, gain));
             }
+
+#if UNITY_EDITOR
+            debugProfiles.SetItems(profiles);
+#endif
 
             knownProfiles.Add(profile);
         }
 
         public void LoseProfile(ProfileModel profile, float loss) {
+            loss *= profileLossMultiplier;
+
             if (profiles.TryGetValue(profile, out float value)) {
                 if (loss >= value) {
                     profiles.Remove(profile);
                 } else {
                     profiles[profile] = value - loss;
                 }
+#if UNITY_EDITOR
+                debugProfiles.SetItems(profiles);
+#endif
             }
         }
     }

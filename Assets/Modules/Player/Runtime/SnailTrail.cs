@@ -21,7 +21,7 @@ namespace SotR.Player {
         }
 
         void Update() {
-            EmitParticles(Time.deltaTime * _emissionMultiplier * _snail.currentVelocity.magnitude);
+            EmitParticles(Time.deltaTime * _emissionMultiplier * _snail.currentSpeed);
         }
 
         void EmitParticles(float multiplier) {
