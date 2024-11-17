@@ -17,10 +17,15 @@ namespace SotR.Game {
 
         SpriteHash _hash;
 
-        public Vector2 forward => (_hash.flipX, _hash.flipY) switch {
-            (_, false) => Vector2.up,
-            (_, true) => Vector2.down,
-        };
+        Vector2Int flipMultiplier => new(
+            _hash.flipX ? -1 : 1,
+            _hash.flipY ? -1 : 1
+        );
+
+        [SerializeField]
+        Vector2 _forward = Vector2.up;
+
+        public Vector2 forward => (_forward * flipMultiplier).normalized;
 
         void UpdatePolygonCollider2DIfHashDiffers(PolygonCollider2D collider, SpriteHash hash) {
             if (_hash != hash) {
@@ -29,18 +34,13 @@ namespace SotR.Game {
                 var points = new List<Vector2>();
                 var simplifiedPoints = new List<Vector2>();
 
-                var multiplier = new Vector2Int(
-                    hash.flipX ? -1 : 1,
-                    hash.flipY ? -1 : 1
-                );
-
                 collider.pathCount = hash.sprite.GetPhysicsShapeCount();
 
                 for (int i = 0; i < collider.pathCount; i++) {
                     hash.sprite.GetPhysicsShape(i, points);
 
                     for (int j = 0; j < points.Count; j++) {
-                        points[j] *= multiplier;
+                        points[j] *= flipMultiplier;
                     }
 
                     LineUtility.Simplify(points, hash.tolerance, simplifiedPoints);
