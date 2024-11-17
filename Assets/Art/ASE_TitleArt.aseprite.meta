@@ -1,0 +1,53 @@
+fileFormatVersion: 2
+guid: 07da21c9b64975f478cae1b00c80c6e8
+importerOverride:
+  nativeImporterType: 2089858483
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: 37c6705b4df1ae1b85ab20734e5bb081
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 873d4f28635220040a6661218521322e, type: 3}
+  useMasterPalette: 0
+  importVariants:
+    processors:
+    - rid: 101759101990338561
+  references:
+    version: 2
+    RefIds:
+    - rid: 101759101990338561
+      type: {class: AsepriteSpriteProcessor, ns: Slothsoft.Aseprite.Editor, asm: Slothsoft.Aseprite.Editor}
+      data:
+        key: sprite
+        settings:
+          singleLayer: 
+          singleTag: 
+          singleSlice: 
+          useTilesetLayers: 0
+          splitByTileGrid: 0
+          splitByLayers: 0
+          splitByTags: 0
+          splitBySlices: 0
+          exportAsSheet: 1
+          exportInTrueColor: 1
+          packSheet: 1
+          ignoreEmptySprites: 0
+          extrude: 0
+          meshType: 0
+          generateFallbackPhysicsShape: 0
+          includeHiddenLayers: 0
+          extractEmission: 1
+          emissionLayerName: Emission
+          emissionTextureName: _EmissionTex
+          textureFilterMode: 0
+          textureWrapMode: 1
+          textureMipChaining: 0
+          pivot: {x: 0.5, y: 0.5}
+          border: {x: 0, y: 0, z: 0, w: 0}
+          pixelsPerUnit: 16
+          importSlicesIfAvailable: 1

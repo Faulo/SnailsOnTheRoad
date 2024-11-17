@@ -18,9 +18,9 @@ MonoBehaviour:
     sceneIndex: 0
     sceneEnabled: 1
   introScene:
-    Scene: {fileID: 102900000, guid: 8c9cfa26abfee488c85f1582747f6a02, type: 3}
-    SceneName: SampleScene
-    sceneIndex: 1
+    Scene: {fileID: 102900000, guid: 3b81af21473f3f543a1b1ebc1d596885, type: 3}
+    SceneName: GameScene
+    sceneIndex: 2
     sceneEnabled: 1
   gameScene:
     Scene: {fileID: 102900000, guid: 3b81af21473f3f543a1b1ebc1d596885, type: 3}
