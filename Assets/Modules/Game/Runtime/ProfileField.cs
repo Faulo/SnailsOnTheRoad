@@ -12,7 +12,7 @@ namespace SotR.Game {
         public void EnterSnail(SnailController controller) {
         }
         public void EffectSnail(SnailController controller) {
-            controller.snail.AddProfile(profile, Time.deltaTime * profileGain);
+            controller.model.AddProfile(profile, Time.deltaTime * profileGain);
         }
         public void ExitSnail(SnailController controller) {
         }

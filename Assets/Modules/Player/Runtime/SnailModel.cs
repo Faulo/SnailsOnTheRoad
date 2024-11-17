@@ -16,6 +16,8 @@ namespace SotR.Player {
             internal float drag = 1;
             [SerializeField]
             internal PhysicsMaterial2D material;
+            [SerializeField]
+            internal ProfileModel profile;
         }
 
         [Header("Config")]
@@ -27,6 +29,10 @@ namespace SotR.Player {
         internal float shellCooldown = 0.1f;
         [SerializeField]
         float profileMaximum = 1;
+        [SerializeField]
+        internal ProfileModel defaultProfile => isInShell
+            ? inShellConfig.profile
+            : defaultConfig.profile;
 
         internal float yawSmoothTime => isInShell
             ? inShellConfig.yawSmoothTime
@@ -73,7 +79,7 @@ namespace SotR.Player {
         internal bool isInShell;
 
         internal readonly HashSet<ProfileModel> knownProfiles = new();
-        readonly Dictionary<ProfileModel, float> profiles = new();
+        internal readonly Dictionary<ProfileModel, float> profiles = new();
 
         float profileBoostMultiplier => profiles
             .Keys
@@ -94,7 +100,7 @@ namespace SotR.Player {
             if (profiles.TryGetValue(profile, out float value)) {
                 profiles[profile] = Mathf.Min(profileMaximum, value + gain);
             } else {
-                profiles.Add(profile, gain);
+                profiles.Add(profile, Mathf.Min(profileMaximum, value));
             }
 
             knownProfiles.Add(profile);

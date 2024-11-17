@@ -12,5 +12,9 @@ namespace SotR.Player {
 
         [SerializeField]
         internal float boostMultiplier = 1;
+
+        [Header("VFX")]
+        [SerializeField]
+        internal ParticleSystem.MinMaxGradient color = new();
     }
 }
