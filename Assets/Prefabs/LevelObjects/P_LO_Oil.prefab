@@ -150,4 +150,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: ef529c40aeaeffc4d9bb1fed5872ad37, type: 2}
-  profileGain: 1
+  profileGain: 10

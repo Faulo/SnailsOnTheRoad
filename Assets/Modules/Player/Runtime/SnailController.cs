@@ -28,6 +28,8 @@ namespace SotR.Player {
             set => attachedRigidbody.velocity = value;
         }
 
+        public float currentSpeed => currentVelocity.magnitude;
+
         public bool isInShell => model.isInShell;
 
         float currentDrag {
@@ -56,15 +58,16 @@ namespace SotR.Player {
         static int overlapCount = 0;
 
         void Start() {
+            input.intendedDirection = transform.up;
             currentMaterial = new PhysicsMaterial2D();
         }
 
         void FixedUpdate() {
             UpdateGround();
 
-            UpdateEffectors();
-
             UpdateProfiles();
+
+            UpdateEffectors();
 
             UpdateSnail();
 
@@ -103,7 +106,7 @@ namespace SotR.Player {
 
         void UpdateProfiles() {
             foreach (var profile in model.knownProfiles) {
-                model.LoseProfile(profile, Time.deltaTime);
+                model.LoseProfile(profile, Time.deltaTime * currentSpeed);
             }
         }
 
