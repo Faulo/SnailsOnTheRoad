@@ -25,6 +25,14 @@ namespace SotR.Game {
         }
 
         [SerializeField]
+        public void ExitGame() {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
+
+        [SerializeField]
         SceneReference endingScene = new();
         public void LoadEnding() {
             endingScene.LoadSceneAsync();
