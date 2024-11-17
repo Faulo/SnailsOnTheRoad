@@ -163,4 +163,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 74c117245b406ba4baba565e8ee028af, type: 2}
-  profileGain: 1
+  profileGain: 5
