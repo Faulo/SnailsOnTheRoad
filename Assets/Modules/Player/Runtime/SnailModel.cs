@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SotR.Player {
@@ -23,39 +25,43 @@ namespace SotR.Player {
         SnailConfig inShellConfig = new();
         [SerializeField]
         internal float shellCooldown = 0.1f;
+        [SerializeField]
+        float profileMaximum = 1;
 
         internal float yawSmoothTime => isInShell
             ? inShellConfig.yawSmoothTime
             : defaultConfig.yawSmoothTime;
 
-        internal float boostMultiplier => isInShell
-            ? inShellConfig.boostMultiplier
-            : defaultConfig.boostMultiplier;
+        float boostMultiplier => isInShell
+            ? inShellConfig.boostMultiplier * profileBoostMultiplier
+            : defaultConfig.boostMultiplier * profileBoostMultiplier;
+
+        internal float boostStep => boostMultiplier * friction * Time.deltaTime;
 
         internal float drag => isInShell
-            ? inShellConfig.drag
-            : defaultConfig.drag;
+            ? inShellConfig.drag * profileDragMultiplier
+            : defaultConfig.drag * profileDragMultiplier;
 
-        internal PhysicsMaterial2D material => isInShell
-            ? inShellConfig.material
-            : defaultConfig.material;
+        internal float friction => isInShell
+            ? inShellConfig.material.friction * ground.friction * profileFrictionMultiplier
+            : defaultConfig.material.friction * ground.friction * profileFrictionMultiplier;
+
+        internal float bounciness => isInShell
+            ? inShellConfig.material.bounciness
+            : defaultConfig.material.bounciness;
 
         internal void ResetRuntime(PhysicsMaterial2D ground) {
             this.ground = ground;
-            boostStep = 0;
             velocity = Vector2.zero;
             yawVelocity = 0;
             isInShell = false;
+            knownProfiles.Clear();
+            profiles.Clear();
         }
 
         [Header("Runtime")]
         [SerializeField]
         internal PhysicsMaterial2D ground;
-
-        internal float frictionMultiplier => ground.friction;
-
-        [SerializeField]
-        internal float boostStep;
 
         [SerializeField]
         internal Vector2 velocity = Vector2.zero;
@@ -65,5 +71,43 @@ namespace SotR.Player {
 
         [SerializeField]
         internal bool isInShell;
+
+        internal readonly HashSet<ProfileModel> knownProfiles = new();
+        readonly Dictionary<ProfileModel, float> profiles = new();
+
+        float profileBoostMultiplier => profiles
+            .Keys
+            .Select(p => p.boostMultiplier)
+            .Aggregate(1f, (a, b) => a * b);
+
+        float profileDragMultiplier => profiles
+            .Keys
+            .Select(p => p.dragMultiplier)
+            .Aggregate(1f, (a, b) => a * b);
+
+        float profileFrictionMultiplier => profiles
+            .Keys
+            .Select(p => p.frictionMultiplier)
+            .Aggregate(1f, (a, b) => a * b);
+
+        public void AddProfile(ProfileModel profile, float gain) {
+            if (profiles.TryGetValue(profile, out float value)) {
+                profiles[profile] = Mathf.Min(profileMaximum, value + gain);
+            } else {
+                profiles.Add(profile, gain);
+            }
+
+            knownProfiles.Add(profile);
+        }
+
+        public void LoseProfile(ProfileModel profile, float loss) {
+            if (profiles.TryGetValue(profile, out float value)) {
+                if (loss >= value) {
+                    profiles.Remove(profile);
+                } else {
+                    profiles[profile] = value - loss;
+                }
+            }
+        }
     }
 }

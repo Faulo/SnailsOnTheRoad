@@ -16,7 +16,7 @@ namespace SotR.Player {
         InputModel input;
 
         [SerializeField, Expandable]
-        SnailModel snail;
+        public SnailModel snail;
 
         public float currentYaw {
             get => attachedRigidbody.rotation;
@@ -55,10 +55,16 @@ namespace SotR.Player {
         static Collider2D[] overlapColliders = new Collider2D[8];
         static int overlapCount = 0;
 
+        void Start() {
+            currentMaterial = new PhysicsMaterial2D();
+        }
+
         void FixedUpdate() {
             UpdateGround();
 
             UpdateEffectors();
+
+            UpdateProfiles();
 
             UpdateSnail();
 
@@ -93,8 +99,12 @@ namespace SotR.Player {
                     shellTimer = snail.shellCooldown;
                 }
             }
+        }
 
-            snail.boostStep = snail.boostMultiplier * snail.frictionMultiplier;
+        void UpdateProfiles() {
+            foreach (var profile in snail.knownProfiles) {
+                snail.LoseProfile(profile, Time.deltaTime);
+            }
         }
 
         void UpdateAnimator() {
@@ -105,12 +115,13 @@ namespace SotR.Player {
             currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref snail.yawVelocity, snail.yawSmoothTime);
 
             if (input.intendsBoost) {
-                currentVelocity += Time.deltaTime * snail.boostStep * transform.up.SwizzleXY();
+                currentVelocity += snail.boostStep * transform.up.SwizzleXY();
             }
 
             currentDrag = snail.drag;
 
-            currentMaterial = snail.material;
+            currentMaterial.friction = snail.friction;
+            currentMaterial.bounciness = snail.bounciness;
         }
 
         Dictionary<ISnailEffector, int> effectors = new();

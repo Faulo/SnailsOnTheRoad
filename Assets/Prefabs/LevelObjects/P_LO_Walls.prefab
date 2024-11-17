@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Name
-      value: P_LO_Wall
+      value: P_LO_Walls
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Layer
@@ -60,10 +60,22 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5492376357498539328, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4979376876150585179, guid: e970cef2e36476749a664e4f1cc06eb2, type: 3}
     - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 75bfe11d2927f0846b5e71b0653383ee, type: 2}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 328
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
