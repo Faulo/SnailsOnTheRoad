@@ -50,14 +50,100 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Name
-      value: P_LO_Ground
+      value: P_LO_PowerField
       objectReference: {fileID: 0}
     - target: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: -24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: -19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x
+      value: 19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8520711673026021729}
   m_SourcePrefab: {fileID: 100100000, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+--- !u!114 &1293909923255438883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8307063582906282244, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+  m_PrefabInstance: {fileID: 7114696101173149479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399427345424118583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58463a7a71da6a646b3f0335f94af4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2399427345424118583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4895412922174721040, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+  m_PrefabInstance: {fileID: 7114696101173149479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8520711673026021729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399427345424118583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc43432d68d25e48a1696604f33f268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelObject: {fileID: 1293909923255438883}
+  _boostSpeed: 500
+  _boostTime: 0.5

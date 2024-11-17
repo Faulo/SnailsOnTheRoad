@@ -17,6 +17,11 @@ namespace SotR.Game {
 
         SpriteHash _hash;
 
+        public Vector2 forward => (_hash.flipX, _hash.flipY) switch {
+            (_, false) => Vector2.up,
+            (_, true) => Vector2.down,
+        };
+
         void UpdatePolygonCollider2DIfHashDiffers(PolygonCollider2D collider, SpriteHash hash) {
             if (_hash != hash) {
                 _hash = hash;

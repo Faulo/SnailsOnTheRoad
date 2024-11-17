@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace SotR.Player {
-    sealed class SnailController : MonoBehaviour {
+    public sealed class SnailController : MonoBehaviour {
         [SerializeField]
         Rigidbody2D attachedRigidbody;
         [SerializeField]
@@ -17,22 +18,24 @@ namespace SotR.Player {
         [SerializeField, Expandable]
         SnailModel snail;
 
-        internal float currentYaw {
+        public float currentYaw {
             get => attachedRigidbody.rotation;
             set => attachedRigidbody.MoveRotation(value);
         }
 
-        internal Vector2 currentVelocity {
+        public Vector2 currentVelocity {
             get => attachedRigidbody.velocity;
             set => attachedRigidbody.velocity = value;
         }
 
-        internal float currentDrag {
+        public bool isInShell => snail.isInShell;
+
+        float currentDrag {
             get => attachedRigidbody.drag;
             set => attachedRigidbody.drag = value;
         }
 
-        internal PhysicsMaterial2D currentMaterial {
+        PhysicsMaterial2D currentMaterial {
             get => attachedRigidbody.sharedMaterial;
             set => attachedRigidbody.sharedMaterial = value;
         }
@@ -55,11 +58,30 @@ namespace SotR.Player {
         void FixedUpdate() {
             UpdateGround();
 
+            UpdateEffectors();
+
             UpdateSnail();
 
             UpdateAnimator();
 
             UpdatePhysics();
+        }
+
+        void UpdateGround() {
+            overlapCount = Physics2D.OverlapPointNonAlloc(attachedRigidbody.position, overlapColliders, groundLayers);
+            if (overlapCount > 0) {
+                snail.ground = overlapColliders
+                    .Take(overlapCount)
+                    .OrderBy(c => c.transform.position.z)
+                    .Select(c => c.sharedMaterial)
+                    .First();
+            }
+        }
+
+        void UpdateEffectors() {
+            foreach (var effector in effectors.Keys) {
+                effector.EffectSnail(this);
+            }
         }
 
         void UpdateSnail() {
@@ -79,17 +101,6 @@ namespace SotR.Player {
             attachedAnimator.SetBool(nameof(snail.isInShell), snail.isInShell);
         }
 
-        void UpdateGround() {
-            overlapCount = Physics2D.OverlapPointNonAlloc(attachedRigidbody.position, overlapColliders, groundLayers);
-            if (overlapCount > 0) {
-                snail.ground = overlapColliders
-                    .Take(overlapCount)
-                    .OrderBy(c => c.transform.position.z)
-                    .Select(c => c.sharedMaterial)
-                    .First();
-            }
-        }
-
         void UpdatePhysics() {
             currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref snail.yawVelocity, snail.yawSmoothTime);
 
@@ -100,6 +111,32 @@ namespace SotR.Player {
             currentDrag = snail.drag;
 
             currentMaterial = snail.material;
+        }
+
+        Dictionary<ISnailEffector, int> effectors = new();
+
+        void OnTriggerEnter2D(Collider2D collider) {
+            if (collider.TryGetComponent<ISnailEffector>(out var effector)) {
+                if (effectors.TryGetValue(effector, out int count)) {
+                    effectors[effector] = count + 1;
+                } else {
+                    effectors.Add(effector, 1);
+                    effector.EnterSnail(this);
+                }
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D collider) {
+            if (collider.TryGetComponent<ISnailEffector>(out var effector)) {
+                if (effectors.TryGetValue(effector, out int count)) {
+                    if (count == 1) {
+                        effectors.Remove(effector);
+                        effector.ExitSnail(this);
+                    } else {
+                        effectors[effector] = count - 1;
+                    }
+                }
+            }
         }
 
         /// <summary>
