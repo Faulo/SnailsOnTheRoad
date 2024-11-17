@@ -37,9 +37,7 @@ MonoBehaviour:
   - {fileID: 4234929818267221556, guid: 5eaa71d98b2d53f41bb9c3b25106b6cf, type: 3}
   - {fileID: 4234929818267221556, guid: 478b315e79affa34685ae2d75eeb115a, type: 3}
   - {fileID: 3063182162195170123, guid: 81103bd2a000e624d96aada205267004, type: 3}
-  - {fileID: 3063182162195170123, guid: d31553b603250854684f8aac455518d3, type: 3}
-  - {fileID: 3063182162195170123, guid: 558af7697c13ae04090936642e6df846, type: 3}
-  currentLevelIndex: 2
+  currentLevelIndex: 0
   maximumLevelIndex: 1
   state: 0
   timer: 0
