@@ -68,7 +68,26 @@ namespace SotR.Game {
         }
 
 #if UNITY_EDITOR
+        [SerializeField]
+        bool snapTransformToPixelGrid = true;
+
+        Vector3 position {
+            get => transform.position;
+            set {
+                if (transform.position != value) {
+                    transform.position = value;
+                    if (!Application.isPlaying) {
+                        UnityEditor.EditorUtility.SetDirty(transform);
+                    }
+                }
+            }
+        }
+
         void Update() {
+            if (snapTransformToPixelGrid) {
+                position = Vector3Int.RoundToInt(position);
+            }
+
             UpdatePolygonCollider2D();
         }
 #endif
