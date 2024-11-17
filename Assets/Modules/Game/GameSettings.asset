@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfbd7710342997448b214f8145a62a6b, type: 3}
-  m_Name: New Game Settings
+  m_Name: GameSettings
   m_EditorClassIdentifier: 
   mainMenuScene:
     Scene: {fileID: 102900000, guid: 04974d7b805cf3f4aa62c200c88c42d7, type: 3}
@@ -27,3 +27,8 @@ MonoBehaviour:
     SceneName: GameScene
     sceneIndex: 2
     sceneEnabled: 1
+  levels:
+  - {fileID: 4234929818267221556, guid: 98c57425f114d7a4fb4b2c6faee0cdde, type: 3}
+  - {fileID: 4234929818267221556, guid: 472ed5a9184c4f94a95561f5d471e1d4, type: 3}
+  - {fileID: 4234929818267221556, guid: 2ef8b9cd3c0e7b84abf6bbb6f071b14e, type: 3}
+  currentLevelIndex: 0
