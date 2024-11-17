@@ -32,3 +32,5 @@ MonoBehaviour:
   - {fileID: 4234929818267221556, guid: 472ed5a9184c4f94a95561f5d471e1d4, type: 3}
   - {fileID: 4234929818267221556, guid: 2ef8b9cd3c0e7b84abf6bbb6f071b14e, type: 3}
   currentLevelIndex: 0
+  state: 2
+  timer: 59.062855
