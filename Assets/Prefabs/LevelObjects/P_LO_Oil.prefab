@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5492376357498539328, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2891556694463309217, guid: 3234329423fcc20408aeb89fbcb3231c, type: 3}
     - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Material
       value: 
@@ -63,6 +67,14 @@ PrefabInstance:
     - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 9140928148526531600, guid: 10b006eb5a329fd40ba2862bc72a1d89, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
@@ -137,3 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e235459ad29550a4a976117b23273c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: ef529c40aeaeffc4d9bb1fed5872ad37, type: 2}
+  profileGain: 1

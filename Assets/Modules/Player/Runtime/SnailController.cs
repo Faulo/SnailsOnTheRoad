@@ -16,7 +16,7 @@ namespace SotR.Player {
         InputModel input;
 
         [SerializeField, Expandable]
-        SnailModel snail;
+        public SnailModel model;
 
         public float currentYaw {
             get => attachedRigidbody.rotation;
@@ -28,7 +28,7 @@ namespace SotR.Player {
             set => attachedRigidbody.velocity = value;
         }
 
-        public bool isInShell => snail.isInShell;
+        public bool isInShell => model.isInShell;
 
         float currentDrag {
             get => attachedRigidbody.drag;
@@ -41,11 +41,11 @@ namespace SotR.Player {
         }
 
         void OnEnable() {
-            snail.ResetRuntime(currentMaterial);
+            model.ResetRuntime(currentMaterial);
         }
 
         void OnDisable() {
-            snail.ResetRuntime(default);
+            model.ResetRuntime(default);
         }
 
         float shellTimer = 0;
@@ -55,10 +55,16 @@ namespace SotR.Player {
         static Collider2D[] overlapColliders = new Collider2D[8];
         static int overlapCount = 0;
 
+        void Start() {
+            currentMaterial = new PhysicsMaterial2D();
+        }
+
         void FixedUpdate() {
             UpdateGround();
 
             UpdateEffectors();
+
+            UpdateProfiles();
 
             UpdateSnail();
 
@@ -70,7 +76,7 @@ namespace SotR.Player {
         void UpdateGround() {
             overlapCount = Physics2D.OverlapPointNonAlloc(attachedRigidbody.position, overlapColliders, groundLayers);
             if (overlapCount > 0) {
-                snail.ground = overlapColliders
+                model.ground = overlapColliders
                     .Take(overlapCount)
                     .OrderBy(c => c.transform.position.z)
                     .Select(c => c.sharedMaterial)
@@ -88,29 +94,34 @@ namespace SotR.Player {
             if (shellTimer > 0) {
                 shellTimer -= Time.deltaTime;
             } else {
-                if (snail.isInShell != input.intendsShell) {
-                    snail.isInShell = input.intendsShell;
-                    shellTimer = snail.shellCooldown;
+                if (model.isInShell != input.intendsShell) {
+                    model.isInShell = input.intendsShell;
+                    shellTimer = model.shellCooldown;
                 }
             }
+        }
 
-            snail.boostStep = snail.boostMultiplier * snail.frictionMultiplier;
+        void UpdateProfiles() {
+            foreach (var profile in model.knownProfiles) {
+                model.LoseProfile(profile, Time.deltaTime);
+            }
         }
 
         void UpdateAnimator() {
-            attachedAnimator.SetBool(nameof(snail.isInShell), snail.isInShell);
+            attachedAnimator.SetBool(nameof(model.isInShell), model.isInShell);
         }
 
         void UpdatePhysics() {
-            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref snail.yawVelocity, snail.yawSmoothTime);
+            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref model.yawVelocity, model.yawSmoothTime);
 
             if (input.intendsBoost) {
-                currentVelocity += Time.deltaTime * snail.boostStep * transform.up.SwizzleXY();
+                currentVelocity += model.boostStep * transform.up.SwizzleXY();
             }
 
-            currentDrag = snail.drag;
+            currentDrag = model.drag;
 
-            currentMaterial = snail.material;
+            currentMaterial.friction = model.friction;
+            currentMaterial.bounciness = model.bounciness;
         }
 
         Dictionary<ISnailEffector, int> effectors = new();

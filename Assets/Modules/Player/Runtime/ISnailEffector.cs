@@ -1,4 +1,3 @@
-
 namespace SotR.Player {
     public interface ISnailEffector {
         void EnterSnail(SnailController controller);
