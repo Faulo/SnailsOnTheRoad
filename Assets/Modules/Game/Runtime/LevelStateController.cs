@@ -24,7 +24,12 @@ namespace SotR.Game {
                     onAbortRace.Invoke();
                     break;
                 case (LevelState.Racing, LevelState.Goal):
-                    onFinishRace.Invoke();
+                    if (settings.timer >= 0) {
+                        onFinishRace.Invoke();
+                    } else {
+                        onFailRace.Invoke();
+                    }
+
                     break;
                 case (LevelState.Goal, LevelState.Racing):
                     break;
@@ -59,6 +64,8 @@ namespace SotR.Game {
         internal UnityEvent onAbortRace = new();
         [SerializeField]
         internal UnityEvent onFinishRace = new();
+        [SerializeField]
+        internal UnityEvent onFailRace = new();
         [SerializeField]
         internal UnityEvent onLoadNextLevel = new();
         [SerializeField]

@@ -37,6 +37,8 @@ namespace SotR.Game {
         [SerializeField, Range(0, 10)]
         internal int currentLevelIndex = 0;
         [SerializeField]
+        internal int maximumLevelIndex = 1;
+        [SerializeField]
         internal LevelState state;
         [SerializeField]
         internal float timer;
@@ -45,6 +47,6 @@ namespace SotR.Game {
 
         internal bool canLoadPreviousLevel => currentLevelIndex > 0;
 
-        internal bool canLoadNextLevel => currentLevelIndex < levels.Length;
+        internal bool canLoadNextLevel => currentLevelIndex < Mathf.Min(maximumLevelIndex, levels.Length);
     }
 }

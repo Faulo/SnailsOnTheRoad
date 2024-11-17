@@ -14,6 +14,10 @@ namespace SotR.Game {
 
         internal Level loadLevel { get; private set; }
 
+        public void AllowNextLevel() {
+            settings.maximumLevelIndex = settings.currentLevelIndex + 1;
+        }
+
         public void LoadNextLevel() {
             settings.currentLevelIndex++;
         }

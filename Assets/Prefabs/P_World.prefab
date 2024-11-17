@@ -1252,7 +1252,25 @@ MonoBehaviour:
   onStartRace:
     m_PersistentCalls:
       m_Calls: []
+  onAbortRace:
+    m_PersistentCalls:
+      m_Calls: []
   onFinishRace:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4196210582052792950}
+        m_TargetAssemblyTypeName: SotR.Game.LevelLoader, SotR.Game
+        m_MethodName: AllowNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFailRace:
     m_PersistentCalls:
       m_Calls: []
   onLoadNextLevel:
