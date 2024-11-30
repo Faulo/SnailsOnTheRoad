@@ -39,6 +39,9 @@ ScriptedImporter:
           exportInTrueColor: 1
           packSheet: 1
           ignoreEmptySprites: 0
+          extrude: 0
+          meshType: 0
+          generateFallbackPhysicsShape: 0
           includeHiddenLayers: 0
           extractEmission: 1
           emissionLayerName: Emission
@@ -67,6 +70,9 @@ ScriptedImporter:
           exportInTrueColor: 1
           packSheet: 1
           ignoreEmptySprites: 0
+          extrude: 0
+          meshType: 0
+          generateFallbackPhysicsShape: 0
           includeHiddenLayers: 0
           extractEmission: 1
           emissionLayerName: Emission
@@ -95,6 +101,9 @@ ScriptedImporter:
           exportInTrueColor: 1
           packSheet: 1
           ignoreEmptySprites: 0
+          extrude: 0
+          meshType: 0
+          generateFallbackPhysicsShape: 0
           includeHiddenLayers: 0
           extractEmission: 1
           emissionLayerName: Emission

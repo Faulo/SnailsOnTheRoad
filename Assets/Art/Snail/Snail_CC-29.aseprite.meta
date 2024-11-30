@@ -29,3 +29,4 @@ ScriptedImporter:
         importAsAnimatorOverride: 0
         referenceController: {instanceID: 0}
         importOverridePrefab: 0
+        pixelsPerUnit: 16
