@@ -11,8 +11,9 @@ namespace SotR.Player {
         float radiusMultiplier = 1;
 
         void Update() {
-            group.m_Targets[0].radius = snail.currentSpeed * radiusMultiplier;
-            group.m_Targets[1].radius = snail.currentSpeed * radiusMultiplier;
+            for (int i = 0; i < group.m_Targets.Length; i++) {
+                group.m_Targets[i].radius = snail.currentSpeed * radiusMultiplier;
+            }
         }
     }
 }

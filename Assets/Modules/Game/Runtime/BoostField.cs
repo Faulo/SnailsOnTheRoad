@@ -1,4 +1,5 @@
-﻿using SotR.Player;
+﻿using Slothsoft.UnityExtensions;
+using SotR.Player;
 using UnityEngine;
 
 namespace SotR.Game {
@@ -25,6 +26,13 @@ namespace SotR.Game {
 
         public void ExitSnail(SnailController controller) {
             controller.currentVelocity = targetVelocity;
+        }
+
+        const float GIZMO_SCALE = 0.25f;
+
+        void OnDrawGizmos() {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(transform.position, transform.position + (GIZMO_SCALE * targetVelocity.SwizzleXY()));
         }
     }
 }

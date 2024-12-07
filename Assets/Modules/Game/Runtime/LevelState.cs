@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design.Serialization;
-
-namespace SotR.Game {
+﻿namespace SotR.Game {
     enum LevelState {
         Invalid,
         Start,

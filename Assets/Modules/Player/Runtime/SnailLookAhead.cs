@@ -15,11 +15,23 @@ namespace SotR.Player {
         [SerializeField]
         float smoothTime = 1;
 
+        Vector3 targetPosition => controller.transform.position + (distance * speedToLook.Evaluate(controller.currentSpeedNormalized) * controller.transform.up);
+
         Vector3 velocity;
 
         void Update() {
-            var target = controller.transform.position + (distance * speedToLook.Evaluate(controller.currentSpeedNormalized) * controller.transform.up);
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, smoothTime);
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
+
+#if UNITY_EDITOR
+        void OnDrawGizmos() {
+            Gizmos.color = new Color(255, 255, 0, 0.5f);
+            Gizmos.DrawLine(controller.transform.position, targetPosition);
+            Gizmos.color = new Color(255, 127, 0, 0.5f);
+            Gizmos.DrawLine(controller.transform.position, transform.position);
+            Gizmos.color = new Color(255, 0, 0, 0.5f);
+            Gizmos.DrawLine(transform.position, targetPosition);
+        }
+#endif
     }
 }
