@@ -12,10 +12,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _ALPHATEST_ON
+  m_InvalidKeywords:
+  - _ALPHAPREMULTIPLY_ON
   - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,7 +70,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
-    - _PixelSample: 62
+    - _PixelSample: 75
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
