@@ -64,7 +64,7 @@ namespace SotR.Player {
 
         void Start() {
             input.intendedDirection = transform.up;
-            currentMaterial = new PhysicsMaterial2D();
+            currentMaterial = new PhysicsMaterial2D(nameof(SnailController));
         }
 
         void FixedUpdate() {
@@ -74,9 +74,13 @@ namespace SotR.Player {
 
             UpdateEffectors();
 
-            UpdateSnail();
+            UpdateShell();
 
             UpdateAnimator();
+
+            UpdateRotation();
+
+            UpdateBoost();
 
             UpdatePhysics();
         }
@@ -98,7 +102,7 @@ namespace SotR.Player {
             }
         }
 
-        void UpdateSnail() {
+        void UpdateShell() {
             if (shellTimer > 0) {
                 shellTimer -= Time.deltaTime;
             } else {
@@ -119,13 +123,24 @@ namespace SotR.Player {
             attachedAnimator.SetBool(nameof(model.isInShell), model.isInShell);
         }
 
-        void UpdatePhysics() {
-            currentYaw = Mathf.SmoothDampAngle(currentYaw, input.intendedYaw, ref model.yawVelocity, model.yawSmoothTime);
+        void UpdateRotation() {
+            float oldYaw = currentYaw;
+            float newYaw = Mathf.SmoothDampAngle(oldYaw, input.intendedYaw, ref model.yawVelocity, model.yawSmoothTime);
 
+            var oldVelocity = currentVelocity;
+            var newVelocity = (Quaternion.Euler(0, 0, newYaw - oldYaw) * oldVelocity.SwizzleXY()).SwizzleXY();
+
+            currentYaw = newYaw;
+            currentVelocity = Vector2.Lerp(oldVelocity, newVelocity, model.friction);
+        }
+
+        void UpdateBoost() {
             if (input.intendsBoost) {
                 currentVelocity += model.boostStep * transform.up.SwizzleXY();
             }
+        }
 
+        void UpdatePhysics() {
             currentDrag = model.drag;
 
             currentMaterial.friction = model.friction;

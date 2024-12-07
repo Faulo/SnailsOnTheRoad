@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultConfig:
     yawSmoothTime: 0.2
-    boostMultiplier: 300
-    drag: 2
+    boostMultiplier: 100
+    drag: 0.5
     material: {fileID: 6200000, guid: ba0e5730c82febe4c9b449e8ad484b1a, type: 2}
     profile: {fileID: 11400000, guid: 304d59b2b68231943be2baf915b6995f, type: 2}
   inShellConfig:
