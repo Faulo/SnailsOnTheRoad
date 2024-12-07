@@ -9,14 +9,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2046714304039959351, guid: fe2e8ec163f84c14a8c7703a5883974c, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2046714304039959351, guid: fe2e8ec163f84c14a8c7703a5883974c, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 2046714304039959351, guid: fe2e8ec163f84c14a8c7703a5883974c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 14
       objectReference: {fileID: 0}
@@ -136,10 +128,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_LO_Oil_Oil_Large
       objectReference: {fileID: 0}
-    - target: {fileID: 3351994625303540327, guid: fe2e8ec163f84c14a8c7703a5883974c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1627534fe1e670445ae57d7e75c44c58, type: 3}
     - target: {fileID: 8878200935224400588, guid: fe2e8ec163f84c14a8c7703a5883974c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
