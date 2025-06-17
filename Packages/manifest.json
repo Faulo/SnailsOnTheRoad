@@ -2,11 +2,17 @@
   "resolutionStrategy": "highestMinor",
   "scopedRegistries": [
     {
+      "name": "Slothsoft",
+      "url": "http://packages.slothsoft.net",
+      "scopes": [
+        "net.slothsoft"
+      ]
+    },
+    {
       "name": "OpenUPM",
       "url": "https://package.openupm.com",
       "scopes": [
         "com.domybest.mybox",
-        "net.slothsoft.unity-extensions",
         "com.inkle.ink-unity-integration",
         "net.tnrd.nsubstitute",
         "nl.jeffreylanters.tweens"
@@ -26,7 +32,8 @@
     "com.unity.ugui": "2.0.0",
     "com.unity.vectorgraphics": "2.0.0-preview.25",
     "com.unity.visualeffectgraph": "17.0.4",
-    "net.slothsoft.unity-extensions": "3.1.0",
+    "net.slothsoft.aseprite": "1.0.0-pre.2",
+    "net.slothsoft.unity-extensions": "4.0.1",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
