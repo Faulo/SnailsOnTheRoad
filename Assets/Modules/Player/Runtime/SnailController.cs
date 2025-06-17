@@ -24,8 +24,8 @@ namespace SotR.Player {
         }
 
         public Vector2 currentVelocity {
-            get => attachedRigidbody.velocity;
-            set => attachedRigidbody.velocity = value;
+            get => attachedRigidbody.linearVelocity;
+            set => attachedRigidbody.linearVelocity = value;
         }
 
         public float currentSpeed => currentVelocity.magnitude;
@@ -38,8 +38,8 @@ namespace SotR.Player {
         public bool isInShell => model.isInShell;
 
         float currentDrag {
-            get => attachedRigidbody.drag;
-            set => attachedRigidbody.drag = value;
+            get => attachedRigidbody.linearDamping;
+            set => attachedRigidbody.linearDamping = value;
         }
 
         PhysicsMaterial2D currentMaterial {
@@ -189,7 +189,7 @@ namespace SotR.Player {
             float average = (myBounciness + theirBounciness) * 0.5f;
             float maximum = Mathf.Max(myBounciness, theirBounciness);
 
-            attachedRigidbody.velocity *= average / maximum;
+            attachedRigidbody.linearVelocity *= average / maximum;
         }
 
         static float GetBounciness(Rigidbody2D rigidbody, Collider2D collider) {
