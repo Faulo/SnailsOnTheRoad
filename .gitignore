@@ -18,17 +18,19 @@ $RECYCLE.BIN/
 !/*.md
 
 # == Jenkins ==
-!/Jenkinsfile
-!/Jenkinsfile.*
+!/.jenkins/
 
 # == Visual Studio ==
+!/.editor/
 !.editorconfig
+!.Directory.Build.props
 
 # == Unity ==
 !/Assets/
 !/ProjectSettings/
 !/Packages/
-/Assets/InitTestScene*
+InitTestScene*
+packages-lock.json
 
 # == Blender ==
 *.blend1*
